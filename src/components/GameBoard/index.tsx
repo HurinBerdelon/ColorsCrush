@@ -133,8 +133,8 @@ export function GameBoard(): JSX.Element {
         const squareBeingReplacedId = parseInt(squaredBeingReplaced.getAttribute('data-id'))
         const squareBeingDraggedId = parseInt(squaredBeingDragged.getAttribute('data-id'))
 
-        currentColorArrangement[squareBeingReplacedId] = squaredBeingDragged.getAttribute('src')
-        currentColorArrangement[squareBeingDraggedId] = squaredBeingReplaced.getAttribute('src')
+        // currentColorArrangement[squareBeingReplacedId] = squaredBeingDragged.getAttribute('src')
+        // currentColorArrangement[squareBeingDraggedId] = squaredBeingReplaced.getAttribute('src')
 
         const validMoves = [
             squareBeingDraggedId - 1,
@@ -145,12 +145,25 @@ export function GameBoard(): JSX.Element {
 
         const validMove = validMoves.includes(squareBeingReplacedId)
 
+        if (validMove) {
+            currentColorArrangement[squareBeingReplacedId] = squaredBeingDragged.getAttribute('src')
+            currentColorArrangement[squareBeingDraggedId] = squaredBeingReplaced.getAttribute('src')
+        }
+
         const isColumnOfFour = checkForColumnOfFour()
         const isRowOfFour = checkForRowOfFour({ currentPieceArrangement: currentColorArrangement, Blank, setScoreDisplay, sequenceOf: 4 })
         const isColumnOfThree = checkForColumnOfThree()
         const isRowOfThree = checkForRowOfThree()
 
+        console.log('isColumnOfFour', isColumnOfFour)
+        console.log('isRowOfFour', isRowOfFour)
+        console.log('isColumnOfThree', isColumnOfThree)
+        console.log('isRowOfThree', isRowOfThree)
+        console.log('validMove', validMove)
+        console.log('________')
+
         if (squareBeingReplacedId && validMove && (isColumnOfFour || isColumnOfThree || isRowOfFour || isRowOfThree)) {
+            
             setSquaredBeingDragged(null)
             setSquaredBeingReplaced(null)
         } else {
@@ -185,14 +198,15 @@ export function GameBoard(): JSX.Element {
             checkForRowOfThree()
             moveIntoSquareBelow()
             setCurrentColorArrangement([...currentColorArrangement])
-        }, 50)
+        }, 1000)
         return () => clearInterval(timer)
 
     }, [checkForColumnOfThree,
         moveIntoSquareBelow,
         checkForColumnOfFour,
         checkForRowOfThree,
-        checkForRowOfFour, currentColorArrangement])
+        checkForRowOfFour, 
+        currentColorArrangement])
 
     return (
         <Container>
