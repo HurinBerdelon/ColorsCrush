@@ -1,15 +1,13 @@
+import { useGame } from "../../hooks/useGame";
 import { Container } from "./style";
 
-interface ScoreBoardProps {
-    score: number
-}
+export function ScoreBoard(): JSX.Element {
 
-export function ScoreBoard({ score }: ScoreBoardProps): JSX.Element {
-
+    const { scoreDisplay } = useGame()
 
     return (
         <Container>
-            <h2>Score: {score}</h2>
+            <h2>Score: {scoreDisplay}</h2>
         </Container>
     )
 }

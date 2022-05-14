@@ -1,1 +1,1 @@
-export const boardWitdh = 8
+export const boardWidth = 8
