@@ -20,13 +20,20 @@ import Reaper from '../../images/reaper.png'
 import Sombra from '../../images/sombra.png'
 import Blank from '../../images/blank.png'
 
+import Purple from '../../images/colors/purple.png'
+import Yellow from '../../images/colors/yellow.png'
+import Red from '../../images/colors/red.png'
+import Blue from '../../images/colors/blue.png'
+import Green from '../../images/colors/green.png'
+import Orange from '../../images/colors/orange.png'
+
 export const squarePieces = [
-    Hanzo,
-    Lucio,
-    Mei,
-    DVA,
-    Reaper,
-    Sombra,
+    Purple,
+    Yellow,
+    Red,
+    Blue,
+    Green,
+    Orange,
 ]
 
 export function GameBoard(): JSX.Element {

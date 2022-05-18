@@ -9,16 +9,16 @@ export const Container = styled.div`
         padding: 30px;
 
         .game {
-            width: 624px;
-            height: 624px;
+            width: 568px;
+            height: 568px;
             display: flex;
-            gap: 8px;
+            gap: 1px;
             flex-wrap: wrap;
 
             img {
                 height: 70px;
                 width: 70px;
-                border-radius: 2rem;
+                /* border-radius: 2rem; */
                 /* padding: 0.5rem; */
             }
         }
