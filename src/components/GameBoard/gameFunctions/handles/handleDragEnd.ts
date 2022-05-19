@@ -10,6 +10,7 @@ interface handleDragEndProps {
     currentPieceArrangement: string[]
     setCurrentPieceArrangement(pieces: string[]): void
     Blank: string
+    isPlaying: boolean
     setScoreDisplay(score): void
 
 }
@@ -23,8 +24,12 @@ export function handleDragEnd(event,
         squaredBeingReplaced,
         setSquaredBeingReplaced,
         Blank,
+        isPlaying,
         setScoreDisplay
     }: handleDragEndProps): void {
+
+    // if user tries to drop a piece outside the table, it will return and leave the function
+    if (!squaredBeingReplaced) return
 
     const squareBeingReplacedId = parseInt(squaredBeingReplaced.getAttribute('data-id'))
     const squareBeingDraggedId = parseInt(squaredBeingDragged.getAttribute('data-id'))
@@ -43,12 +48,12 @@ export function handleDragEnd(event,
         currentPieceArrangement[squareBeingDraggedId] = squaredBeingReplaced.getAttribute('src')
     }
 
-    const isColumnOfFive = checkForColumn({ currentPieceArrangement, Blank, setScoreDisplay, sequenceOf: 5 })
-    const isRowOfFive = checkForRow({ currentPieceArrangement, Blank, setScoreDisplay, sequenceOf: 5 })
-    const isColumnOfFour = checkForColumn({ currentPieceArrangement, Blank, setScoreDisplay, sequenceOf: 4 })
-    const isRowOfFour = checkForRow({ currentPieceArrangement, Blank, setScoreDisplay, sequenceOf: 4 })
-    const isColumnOfThree = checkForColumn({ currentPieceArrangement, Blank, setScoreDisplay, sequenceOf: 3 })
-    const isRowOfThree = checkForRow({ currentPieceArrangement, Blank, setScoreDisplay, sequenceOf: 3 })
+    const isColumnOfFive = checkForColumn({ currentPieceArrangement, Blank, setScoreDisplay, sequenceOf: 5, isPlaying })
+    const isRowOfFive = checkForRow({ currentPieceArrangement, Blank, setScoreDisplay, sequenceOf: 5, isPlaying })
+    const isColumnOfFour = checkForColumn({ currentPieceArrangement, Blank, setScoreDisplay, sequenceOf: 4, isPlaying })
+    const isRowOfFour = checkForRow({ currentPieceArrangement, Blank, setScoreDisplay, sequenceOf: 4, isPlaying })
+    const isColumnOfThree = checkForColumn({ currentPieceArrangement, Blank, setScoreDisplay, sequenceOf: 3, isPlaying })
+    const isRowOfThree = checkForRow({ currentPieceArrangement, Blank, setScoreDisplay, sequenceOf: 3, isPlaying })
 
     if (squareBeingReplacedId && validMove &&
         (isColumnOfFour || isColumnOfThree || isRowOfFour || isRowOfThree || isColumnOfFive || isRowOfFive)

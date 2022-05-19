@@ -7,9 +7,10 @@ interface checkForRowProps {
     Blank: string
     setScoreDisplay(score): void
     sequenceOf: number
+    isPlaying: boolean
 }
 
-export function checkForRow({ currentPieceArrangement, Blank, setScoreDisplay, sequenceOf }: checkForRowProps): boolean {
+export function checkForRow({ currentPieceArrangement, Blank, setScoreDisplay, sequenceOf, isPlaying }: checkForRowProps): boolean {
 
     // Find fields that should not be watched for current sequenceOf 
     const notValid: number[] = []
@@ -35,9 +36,10 @@ export function checkForRow({ currentPieceArrangement, Blank, setScoreDisplay, s
 
         if (notValid.includes(i)) continue
 
-        // check if every 3 elements are the same
+        // check if every sequenceOf elements are the same
         if (row.every(square => currentPieceArrangement[square] === decidedPiece && !isBlank)) {
-            setScoreDisplay((scoreDisplay: number) => scoreDisplay + sequenceOf)
+
+            if (isPlaying) setScoreDisplay((scoreDisplay: number) => scoreDisplay + sequenceOf)
             row.forEach(square => currentPieceArrangement[square] = Blank)
             return true
         }

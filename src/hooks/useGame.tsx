@@ -1,5 +1,6 @@
 import { createContext, ReactNode, useContext, useState } from "react";
-import Blank from '../images/blank.png'
+
+const Blank = '/images/blank.png'
 
 interface GameContextData {
     boardImages: string[]
@@ -12,6 +13,8 @@ interface GameContextData {
     setSquaredBeingReplaced(square: HTMLImageElement): void
     scoreDisplay: number
     setScoreDisplay(score): void
+    isPlaying: boolean
+    setIsPlaying(isPlaying: boolean): void
     Blank: string
 }
 
@@ -30,6 +33,7 @@ export function GameProvider({ children }: GameProviderProps) {
     const [squaredBeingDragged, setSquaredBeingDragged] = useState(null)
     const [squaredBeingReplaced, setSquaredBeingReplaced] = useState(null)
     const [scoreDisplay, setScoreDisplay] = useState(0)
+    const [isPlaying, setIsPlaying] = useState(false)
 
     return (
         <GameContext.Provider
@@ -44,6 +48,8 @@ export function GameProvider({ children }: GameProviderProps) {
                 setSquaredBeingReplaced,
                 scoreDisplay,
                 setScoreDisplay,
+                isPlaying,
+                setIsPlaying,
                 Blank
             }}
         >
