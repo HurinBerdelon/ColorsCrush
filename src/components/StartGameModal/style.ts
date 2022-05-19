@@ -8,17 +8,22 @@ export const Container = styled.div`
     align-items: center;
     
     button {
-        background: var(--gray-200);
-        border: none;
-        width: 50%;
+        background: var(--blue-100);
+        width: 80%;
         height: 50%;
+        
         border-radius: 0.5rem;
-        border: 1px solid var(--gray-500);
-        font-size: 1.25rem;
-        cursor: pointer;
+        border: 1px solid var(--blue-100);
 
+        font-family: 'Smooch', cursive;
+        font-size: 1.825rem;
+        letter-spacing: 0.2rem;
+        color: var(--gray-900);
+
+        cursor: pointer;
+        
         &:hover {
-            filter: brightness(0.8);
+            filter: brightness(0.9);
         }
 
 

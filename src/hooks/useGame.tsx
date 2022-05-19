@@ -34,6 +34,7 @@ export function GameProvider({ children }: GameProviderProps) {
     const [squaredBeingReplaced, setSquaredBeingReplaced] = useState(null)
     const [scoreDisplay, setScoreDisplay] = useState(0)
     const [isPlaying, setIsPlaying] = useState(false)
+    // const [playerName, setPlayerName] = useState('')
 
     return (
         <GameContext.Provider

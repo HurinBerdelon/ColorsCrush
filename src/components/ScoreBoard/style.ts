@@ -22,6 +22,8 @@ export const Container = styled.div<ContainerProps>`
         flex-direction: column;
         align-items: center;    
         justify-content: space-evenly;
+
+        color: var(--gray-900);
         
         .scoreBox {
             background: var(--black);

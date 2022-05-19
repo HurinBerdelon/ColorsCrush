@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
         --gray-50: #FAFAFA;
         --gray-200: #C0C4C4;
         --gray-500: #AAAAAA;
+        --gray-900: #232320;
 
         --blue-100: #BCE6E6;
 
@@ -20,11 +21,11 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
     }
 
     .react-modal-overlay {
         background: rgba(0, 0, 0, 0.6);
-        filter: grayscale(.7);
 
         position: fixed;
         top:0;

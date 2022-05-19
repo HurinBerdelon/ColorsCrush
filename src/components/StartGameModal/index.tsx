@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import Modal from 'react-modal'
 import { useGame } from '../../hooks/useGame'
 import { Container } from './style'
@@ -9,14 +10,17 @@ interface StartGameModalProps {
 
 export function StartGameModal({ isOpen, onRequestClose }: StartGameModalProps): JSX.Element {
 
-    const { setIsPlaying } = useGame()
+    const { setIsPlaying, isPlaying } = useGame()
+
+    useEffect(() => {
+        Modal.setAppElement(document.getElementById('__next'))
+    }, [])
 
     return (
         <Modal
             isOpen={isOpen}
-            onRequestClose={onRequestClose}
+            onRequestClose={() => { }}
             overlayClassName='react-modal-overlay'
-            // appElement={document.getElementById('app_root') as HTMLElement}
             className='react-modal-content'
         >
             <Container>
@@ -27,7 +31,7 @@ export function StartGameModal({ isOpen, onRequestClose }: StartGameModalProps):
                         onRequestClose()
                     }}
                 >
-                    Click to play
+                    Click to Play
                 </button>
             </Container>
         </Modal>
