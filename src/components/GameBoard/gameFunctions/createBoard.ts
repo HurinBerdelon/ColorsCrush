@@ -1,12 +1,12 @@
-import { squarePieces } from ".."
 import { boardWidth } from "../../../config"
 
 
 interface createBoardProps {
     setCurrentPieceArrangement(pieces: string[]): void
+    squarePieces: string[]
 }
 
-export function createBoard({ setCurrentPieceArrangement }: createBoardProps): void {
+export function createBoard({ squarePieces, setCurrentPieceArrangement }: createBoardProps): void {
 
     const randomPieceArrangement = []
 

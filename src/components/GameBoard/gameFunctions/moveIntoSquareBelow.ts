@@ -1,12 +1,12 @@
-import { squarePieces } from ".."
 import { boardWidth } from "../../../config"
 
 interface moveIntoSquareBelowProps {
     currentPieceArrangement: string[]
     Blank: string
+    squarePieces: string[]
 }
 
-export function moveIntoSquareBelow({ Blank, currentPieceArrangement }: moveIntoSquareBelowProps): void {
+export function moveIntoSquareBelow({ squarePieces, Blank, currentPieceArrangement }: moveIntoSquareBelowProps): void {
 
     const firstRow: number[] = []
 

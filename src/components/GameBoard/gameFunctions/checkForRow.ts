@@ -1,6 +1,4 @@
-import { useEffect } from "react"
 import { boardWidth } from "../../../config"
-import { useGame } from "../../../hooks/useGame"
 
 interface checkForRowProps {
     currentPieceArrangement: string[]
