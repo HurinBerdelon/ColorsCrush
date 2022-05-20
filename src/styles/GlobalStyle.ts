@@ -24,6 +24,11 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'Poppins', sans-serif;
     }
 
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
     .react-modal-overlay {
         background: rgba(0, 0, 0, 0.6);
 
@@ -64,7 +69,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 `
 
-export const BodyContainer = styled.div`
+export const GameBodyContainer = styled.div`
     display: flex;
     width: 100vw;
     height: 100vh;
