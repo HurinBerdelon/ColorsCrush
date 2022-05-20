@@ -15,7 +15,7 @@ export const Container = styled.div<ContainerProps>`
 
         height: 600px;
         width: 80%;
-        background: linear-gradient(to top right, var(--gray-200), var(--blue-100));
+        background: linear-gradient(to top left, var(--gray-200), var(--blue-100));
         border-radius: 0.5rem;
 
         display: flex;
