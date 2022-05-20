@@ -2,6 +2,8 @@ export const boardWidth = 8
 
 export const db_frequency = 15
 
+export const scoreTableLenght = 10
+
 export const squarePiecesTemplate = {
     light: [
         '/images/light/pink.png',

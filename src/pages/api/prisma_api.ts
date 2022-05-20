@@ -1,7 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { fauna } from "../../services/fauna";
 import { query as q } from 'faunadb'
+import { fauna } from "../../services/fauna";
 import { GameSchema } from "../../schema/game";
+import { scoreTableLenght } from "../../config";
 
 interface FaunaQuery {
     after: []
@@ -44,7 +45,7 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
                 q.Match(
                     q.Index('sort_by_score')
                 ),
-                { size: 10 }
+                { size: scoreTableLenght }
             ),
         )
         response.json({ games: data })

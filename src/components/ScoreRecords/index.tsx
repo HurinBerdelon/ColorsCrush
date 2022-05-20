@@ -1,21 +1,25 @@
-import { useGame } from "../../hooks/useGame";
-import { Container } from "./style";
-import { v4 as uuidv4 } from 'uuid'
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import { useEffect, useState } from "react";
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
+import dayjs from "dayjs";
+import { v4 as uuidv4 } from 'uuid'
+import { Container } from "./style";
+import { useGame } from "../../hooks/useGame";
 import { GameSchema } from "../../schema/game";
 import { api } from "../../services/api";
-import dayjs from "dayjs";
 import { db_frequency } from "../../config";
 
-interface TableGameSchema extends GameSchema {
+export interface TableGameSchema extends GameSchema {
     currentGame: boolean
 }
 
-export function ScoreRecords(): JSX.Element {
+interface ScoreRecordsProps {
+    historical: TableGameSchema[]
+}
+
+export function ScoreRecords({ historical }: ScoreRecordsProps): JSX.Element {
 
     const { player, scoreDisplay } = useGame()
-    const [historicalScores, setHistoricalScores] = useState<TableGameSchema[]>([])
+    const [historicalScores, setHistoricalScores] = useState<TableGameSchema[]>(historical)
     const [timestamp, setTimestamp] = useState(dayjs().unix())
     const [game, setGame] = useState<GameSchema>({
         id: uuidv4(),
@@ -25,6 +29,17 @@ export function ScoreRecords(): JSX.Element {
     })
 
     function updateHistoricalScores(currentGame: GameSchema) {
+
+        if (historicalScores.length === 0) {
+            if (currentGame.score > 0) {
+                historicalScores.push({
+                    ...currentGame,
+                    currentGame: true
+                })
+                setHistoricalScores(historicalScores)
+            }
+            return
+        }
 
         if (historicalScores[historicalScores.length - 1].score < currentGame.score) {
             const game = historicalScores.find(item => item.id === currentGame.id)
@@ -48,20 +63,6 @@ export function ScoreRecords(): JSX.Element {
     }
 
     useEffect(() => {
-        api.get('/prisma_api')
-            .then(response => setHistoricalScores(response.data.games.map(game => {
-                return {
-                    id: game[3],
-                    playerName: game[1],
-                    score: game[0],
-                    theme: game[2],
-                    currentGame: false
-                }
-            }
-            )))
-    }, [])
-
-    useEffect(() => {
         if (player) {
             setGame({
                 ...game,
@@ -74,17 +75,16 @@ export function ScoreRecords(): JSX.Element {
 
     // Everytime the game changes, check if has passed db_frequency seconds and updates database
     useEffect(() => {
-
         const currentTimestamp = dayjs().unix()
 
         if (game && game.score > 0 && (currentTimestamp - timestamp) >= db_frequency) {
 
-            // api.post('/prisma_api', game)
+            api.post('/prisma_api', game)
 
             setTimestamp(currentTimestamp)
         }
 
-        if (historicalScores.length > 0) updateHistoricalScores(game)
+        updateHistoricalScores(game)
     }, [game])
 
     return (
