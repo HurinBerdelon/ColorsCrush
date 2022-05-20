@@ -10,7 +10,7 @@ interface StartGameModalProps {
 
 export function StartGameModal({ isOpen, onRequestClose }: StartGameModalProps): JSX.Element {
 
-    const { setIsPlaying, isPlaying } = useGame()
+    const { setIsPlaying } = useGame()
 
     useEffect(() => {
         Modal.setAppElement(document.getElementById('__next'))
@@ -24,7 +24,6 @@ export function StartGameModal({ isOpen, onRequestClose }: StartGameModalProps):
             className='react-modal-content'
         >
             <Container>
-
                 <button
                     onClick={() => {
                         setIsPlaying(true)
