@@ -4,7 +4,7 @@ export const db_frequency = 15
 
 export const squarePiecesTemplate = {
     light: [
-        '/images/light/purple.png',
+        '/images/light/pink.png',
         '/images/light/yellow.png',
         '/images/light/red.png',
         '/images/light/blue.png',

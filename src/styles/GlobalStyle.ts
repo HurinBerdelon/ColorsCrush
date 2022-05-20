@@ -5,6 +5,10 @@ export const GlobalStyle = createGlobalStyle`
         --white: #FFFFFF;
         --black: #000000;
 
+        --golden: #d4af37;
+        --silver: #bec2cb;
+        --bronze: #CD7F32;
+
         --gray-50: #FAFAFA;
         --gray-200: #C0C4C4;
         --gray-500: #AAAAAA;
@@ -14,7 +18,14 @@ export const GlobalStyle = createGlobalStyle`
 
         --blue-green: #02DCBD;
 
-        --green-200: #15D011;
+        --green-100: #AEFFD8;
+        --green-200: #8AFFC1;
+        --green-300: #8FDC97;
+        --green-400: #15D011;
+
+        --pink-400: #AC8887;
+        --red-400: #9F4A54;
+
     }
 
     * {
@@ -73,5 +84,5 @@ export const GameBodyContainer = styled.div`
     display: flex;
     width: 100vw;
     height: 100vh;
-    background: var(--gray-50);
+    background: ${props => props.theme.colors.background};
 `

@@ -36,7 +36,7 @@ export default function MainMenu(): JSX.Element {
                 onColor={colors.secundary}
             /> */}
 
-            <h1>Welcome to Colors Crush</h1>
+            <h1>Welcome to Colors Crush<span>Beta</span></h1>
             {player
                 ? null
                 : <input

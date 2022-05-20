@@ -15,7 +15,11 @@ export const Container = styled.div<ContainerProps>`
 
         height: 600px;
         width: 80%;
-        background: linear-gradient(to top left, var(--gray-200), var(--blue-100));
+        background: linear-gradient(
+            to top left,
+            ${props => props.theme.colors.boxColorOne},
+            ${props => props.theme.colors.boxColorTwo}
+            );
         border-radius: 0.5rem;
 
         display: flex;
@@ -23,11 +27,11 @@ export const Container = styled.div<ContainerProps>`
         align-items: center;    
         justify-content: space-evenly;
 
-        color: var(--gray-900);
+        color: ${props => props.theme.colors.mainText};
         
         .scoreBox {
-            background: var(--black);
-            border: 1rem solid var(--gray-500);
+            background: ${props => props.theme.colors.black};
+            border: 1rem solid ${props => props.theme.colors.gray};
             height: 50%;
             width: 4rem;
             border-radius: 1rem 1rem 0.5rem 0.5rem ;
@@ -36,7 +40,11 @@ export const Container = styled.div<ContainerProps>`
             justify-content: center;
         
             .scoreBar {
-                background: linear-gradient(to top, var(--blue-green), var(--green-200));
+                background: linear-gradient(
+                    to top, 
+                    ${props => props.theme.colors.scoreBarOne}, 
+                    ${props => props.theme.colors.scoreBarTwo}
+                    );
                 height: ${props => props.percent}%;
                 width: 2rem;
             }        

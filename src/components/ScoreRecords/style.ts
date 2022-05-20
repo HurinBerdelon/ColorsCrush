@@ -6,12 +6,16 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--gray-900);
+    color: ${props => props.theme.colors.mainText};
 
     .content {
         height: 600px;
         width: 90%;
-        background: linear-gradient(to top right, var(--gray-900), var(--green-200));
+        background: linear-gradient(
+            to top right,
+            ${props => props.theme.colors.boxColorOne},
+            ${props => props.theme.colors.boxColorTwo}
+            );
         border-radius: 0.5rem;
 
         display: flex;
@@ -20,6 +24,7 @@ export const Container = styled.div`
 
         .table {
             /* background: var(--white); */
+            width: 90%;
             max-width: 100%;
             padding: 1rem;
 
@@ -29,7 +34,7 @@ export const Container = styled.div`
 
             .title, .row {
                 display: grid;
-                grid-template-columns: 1.25fr repeat(3, 2fr);
+                grid-template-columns: 1.25fr 4fr 2fr;
                 gap: 1rem;
             }
 
@@ -41,29 +46,27 @@ export const Container = styled.div`
 
             .place_1 {
                 svg {
-                    color: #d4af37;
+                    color: var(--golden);
+                    
                 }
-                /* background: #d4af37; */
             }
 
             .place_2 {
-                /* background: #bec2cb; */
                 svg {
-                    color: #bec2cb;
+                    color: var(--silver);
                 }
             }
 
             .place_3 {  
-                /* background: #CD7F32; */
                 svg {
-                    color: #CD7F32;
+                    color: var(--bronze);
                 }
             }
 
             .row {
                 padding-top: 0.25rem;
                 align-items: flex-end;
-                border-bottom: dashed 1px var(--gray-900);
+                border-bottom: dashed 1px ${props => props.theme.colors.mainText};
 
                 .place {
                     font-weight: 700;
@@ -78,18 +81,14 @@ export const Container = styled.div`
                     text-overflow: ellipsis;
                     white-space: nowrap;
                 }
-
-                .theme {
-                    font-size: 0.9125rem;
-                }
-
-                .score {
-                    font-weight: 700;
-                }
             }
+            .score {
+                    font-weight: 700;
+                    text-align: end;
+                }
 
             .coloredRow {
-                color: #1AA7EC;
+                color: ${props => props.theme.colors.currentPlayer};
             }
         }
     }

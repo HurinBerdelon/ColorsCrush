@@ -8,17 +8,17 @@ export const Container = styled.div`
     align-items: center;
     
     button {
-        background: var(--blue-100);
+        background: ${props => props.theme.colors.boxColorOne};
         width: 80%;
         height: 50%;
         
         border-radius: 0.5rem;
-        border: 1px solid var(--blue-100);
+        border: none;
 
         font-family: 'Smooch', cursive;
         font-size: 1.825rem;
         letter-spacing: 0.2rem;
-        color: var(--gray-900);
+        color: ${props => props.theme.colors.mainText};
 
         cursor: pointer;
         

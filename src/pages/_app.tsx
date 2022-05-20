@@ -17,7 +17,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 
     return (
         <ThemeProvider
-            theme={light}
+            theme={theme}
         >
             <GameProvider>
                 <GlobalStyle />

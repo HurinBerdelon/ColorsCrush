@@ -94,7 +94,6 @@ export function ScoreRecords(): JSX.Element {
                     <div className="title">
                         <p></p>
                         <p className="name">PLAYER</p>
-                        <p className="theme">THEME</p>
                         <p className="score">SCORE</p>
                     </div>
                     {historicalScores
@@ -102,7 +101,6 @@ export function ScoreRecords(): JSX.Element {
                             <div key={score.id} className={`row place_${index + 1} ${score.currentGame ? 'coloredRow' : ''}`}>
                                 <p className='place'>{index + 1}{index < 3 && <EmojiEventsIcon />}</p>
                                 <p className="name">{score.playerName}</p>
-                                <p className="theme">{score.theme}</p>
                                 <p className="score">{score.score}</p>
                             </div>
                         ))

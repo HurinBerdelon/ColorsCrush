@@ -8,16 +8,23 @@ export const Container = styled.div`
 
     width: 100vw;
     height: calc(100vh - 1.6rem);
-    background: var(--gray-50);
+    background: ${props => props.theme.colors.background};
     overflow: hidden;
 
-    color: var(--gray-900);
+    color: ${props => props.theme.colors.mainText};
 
     h1 {
         font-family: 'Smooch', cursive;
         margin-bottom: 2rem;
         font-size: 4rem;
         letter-spacing: 0.25rem;
+
+        span {
+            font-family: 'Smooch', cursive;
+            font-size: 2rem;
+            padding-left: 1rem;
+            color: ${props => props.theme.colors.secondaryText};
+        }
     }
 
     input {
@@ -35,10 +42,10 @@ export const Container = styled.div`
         flex-direction: column;
         a {
             font-size: 1.25rem;
-            color: #f00;
+            color: ${props => props.theme.colors.secondaryText};
 
             &:hover {
-                color: var(--gray-500);
+                filter: brightness(0.8);
             }
         }
     }
