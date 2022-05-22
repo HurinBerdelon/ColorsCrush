@@ -9,17 +9,7 @@ import { handleDragEnd } from "./gameFunctions/handles/handleDragEnd"
 import { handleDragStart } from "./gameFunctions/handles/handleDragStart"
 import { handleDrop } from "./gameFunctions/handles/handleDrop"
 
-import { ScoreBoard } from "../ScoreBoard"
 import { Container } from "./style"
-
-export const squarePieces = [
-    '/images/colors/purple.png',
-    '/images/colors/yellow.png',
-    '/images/colors/red.png',
-    '/images/colors/blue.png',
-    '/images/colors/green.png',
-    '/images/colors/orange.png',
-]
 
 export function GameBoard(): JSX.Element {
 
@@ -32,12 +22,13 @@ export function GameBoard(): JSX.Element {
         setSquaredBeingReplaced,
         setScoreDisplay,
         isPlaying,
-        Blank
+        Blank,
+        squarePieces
     } = useGame()
 
     useEffect(() => {
-        createBoard({ setCurrentPieceArrangement })
-    }, [])
+        createBoard({ setCurrentPieceArrangement, squarePieces })
+    }, [squarePieces])
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -47,7 +38,7 @@ export function GameBoard(): JSX.Element {
             checkForRow({ currentPieceArrangement, Blank, setScoreDisplay, sequenceOf: 4, isPlaying })
             checkForColumn({ currentPieceArrangement, Blank, setScoreDisplay, sequenceOf: 3, isPlaying })
             checkForRow({ currentPieceArrangement, Blank, setScoreDisplay, sequenceOf: 3, isPlaying })
-            moveIntoSquareBelow({ Blank, currentPieceArrangement })
+            moveIntoSquareBelow({ Blank, currentPieceArrangement, squarePieces })
             setCurrentPieceArrangement([...currentPieceArrangement])
         }, 50)
         return () => clearInterval(timer)

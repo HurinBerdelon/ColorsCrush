@@ -13,7 +13,11 @@ export const Container = styled.section`
         gap: 1px;
         flex-wrap: wrap;
         padding: 16px;
-        background: linear-gradient(to top left, var(--gray-200), var(--blue-100));
+        background: linear-gradient(
+            to top,
+            ${props => props.theme.colors.boxColorOne},
+            ${props => props.theme.colors.boxColorTwo}
+            );
         border-radius: 0.5rem;
 
         img {

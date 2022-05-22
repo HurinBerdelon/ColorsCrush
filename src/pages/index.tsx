@@ -1,25 +1,16 @@
-import { useState } from "react";
-import { GameBoard } from "../components/GameBoard";
-import { ScoreBoard } from "../components/ScoreBoard";
-import { StartGameModal } from "../components/StartGameModal";
-import { GameProvider } from "../hooks/useGame";
+import Head from "next/head"
+import { Footer } from "../components/Footer"
+import MainMenu from "../components/MainMenu"
 
 export default function Home(): JSX.Element {
 
-    const [isStartGameModalOpen, setIsStartGameModalOpen] = useState(true)
-
-    function handleToggleStartGameModal() {
-        setIsStartGameModalOpen(!isStartGameModalOpen)
-    }
-
     return (
-        <GameProvider>
-            <StartGameModal
-                isOpen={isStartGameModalOpen}
-                onRequestClose={handleToggleStartGameModal}
-            />
-            <ScoreBoard />
-            <GameBoard />
-        </GameProvider>
+        <>
+            <Head>
+                <title>Home | ColorsCrush</title>
+            </Head>
+            <MainMenu />
+            <Footer />
+        </>
     )
 }

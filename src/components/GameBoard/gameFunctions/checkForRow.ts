@@ -1,6 +1,4 @@
-import { useEffect } from "react"
 import { boardWidth } from "../../../config"
-import { useGame } from "../../../hooks/useGame"
 
 interface checkForRowProps {
     currentPieceArrangement: string[]
@@ -39,7 +37,7 @@ export function checkForRow({ currentPieceArrangement, Blank, setScoreDisplay, s
         // check if every sequenceOf elements are the same
         if (row.every(square => currentPieceArrangement[square] === decidedPiece && !isBlank)) {
 
-            if (isPlaying) setScoreDisplay((scoreDisplay: number) => scoreDisplay + sequenceOf)
+            if (isPlaying) setScoreDisplay((scoreDisplay: number) => scoreDisplay + sequenceOf * (sequenceOf - 2))
             row.forEach(square => currentPieceArrangement[square] = Blank)
             return true
         }

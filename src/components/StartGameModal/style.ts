@@ -8,17 +8,22 @@ export const Container = styled.div`
     align-items: center;
     
     button {
-        background: var(--gray-200);
-        border: none;
-        width: 50%;
+        background: ${props => props.theme.colors.boxColorOne};
+        width: 80%;
         height: 50%;
+        
         border-radius: 0.5rem;
-        border: 1px solid var(--gray-500);
-        font-size: 1.25rem;
-        cursor: pointer;
+        border: none;
 
+        font-family: 'Smooch', cursive;
+        font-size: 1.825rem;
+        letter-spacing: 0.2rem;
+        color: ${props => props.theme.colors.mainText};
+
+        cursor: pointer;
+        
         &:hover {
-            filter: brightness(0.8);
+            filter: brightness(0.9);
         }
 
 

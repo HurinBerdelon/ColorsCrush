@@ -27,7 +27,7 @@ export function checkForColumn({ currentPieceArrangement, Blank, sequenceOf, set
         // check if every sequenceOf elements are the same
         if (column.every(square => currentPieceArrangement[square] === decidedPiece && !isBlank)) {
 
-            if (isPlaying) setScoreDisplay((score: number) => score + sequenceOf)
+            if (isPlaying) setScoreDisplay((score: number) => score + sequenceOf * (sequenceOf - 2))
             column.forEach(square => currentPieceArrangement[square] = Blank)
             return true
         }
