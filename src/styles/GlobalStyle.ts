@@ -10,6 +10,8 @@ export const GlobalStyle = createGlobalStyle`
         --bronze: #CD7F32;
 
         --gray-50: #FAFAFA;
+        --gray-100: #F8F8F8;
+        --gray-150: #E8E8E8;
         --gray-200: #C0C4C4;
         --gray-500: #AAAAAA;
         --gray-900: #232320;
@@ -26,6 +28,18 @@ export const GlobalStyle = createGlobalStyle`
         --pink-400: #AC8887;
         --red-400: #9F4A54;
 
+        --purple-500: #8257E5;
+        --purple-400: #996DFF;
+
+        /* Color for light theme pieces 
+            #86E3AE;
+            #86ACCF;
+            #AC8CCF;
+            #FA9BB8;
+            #F0A166;
+            #F5CB80;
+        */
+
     }
 
     * {
@@ -33,6 +47,12 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
         font-family: 'Poppins', sans-serif;
+    }
+
+    button {
+        cursor: pointer;
+        background: none;
+        border: none;
     }
 
     a {
@@ -56,7 +76,7 @@ export const GlobalStyle = createGlobalStyle`
 
     .react-modal-content {
         width: 100%;
-        max-width: 320px;
+        max-width: 400px;
 
         background: var(--gray-50);
         padding: 2rem;
@@ -82,6 +102,8 @@ export const GlobalStyle = createGlobalStyle`
 
 export const GameBodyContainer = styled.div`
     display: flex;
+    justify-content: space-evenly;
+    align-items: center;
     width: 100vw;
     height: 100vh;
     background: ${props => props.theme.colors.background};

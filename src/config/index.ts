@@ -8,7 +8,7 @@ export const squarePiecesTemplate = {
     light: [
         '/images/light/pink.png',
         '/images/light/yellow.png',
-        '/images/light/red.png',
+        '/images/light/purple.png',
         '/images/light/blue.png',
         '/images/light/green.png',
         '/images/light/orange.png',

@@ -13,8 +13,8 @@ export const Container = styled.div`
         width: 90%;
         background: linear-gradient(
             to top right,
-            ${props => props.theme.colors.boxColorOne},
-            ${props => props.theme.colors.boxColorTwo}
+            ${props => props.theme.colors.boxColorTwo},
+            ${props => props.theme.colors.boxColorOne}
             );
         border-radius: 0.5rem;
 
