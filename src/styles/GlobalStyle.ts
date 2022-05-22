@@ -76,7 +76,7 @@ export const GlobalStyle = createGlobalStyle`
 
     .react-modal-content {
         width: 100%;
-        max-width: 320px;
+        max-width: 400px;
 
         background: var(--gray-50);
         padding: 2rem;
@@ -102,6 +102,8 @@ export const GlobalStyle = createGlobalStyle`
 
 export const GameBodyContainer = styled.div`
     display: flex;
+    justify-content: space-evenly;
+    align-items: center;
     width: 100vw;
     height: 100vh;
     background: ${props => props.theme.colors.background};

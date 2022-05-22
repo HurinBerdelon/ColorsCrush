@@ -9,7 +9,7 @@ export const Container = styled.div`
     
     button {
         background: ${props => props.theme.colors.boxColorOne};
-        width: 80%;
+        width: 65%;
         height: 50%;
         
         border-radius: 0.5rem;

@@ -21,10 +21,11 @@ export const Container = styled.section`
         border-radius: 0.5rem;
 
         img {
-            height: 70px;
+            object-fit: contain;
             width: 70px;
+            height: 70px;
             cursor: pointer;
-            border-radius: 50%;
+            border-radius: 100%;
         }
     }
 `

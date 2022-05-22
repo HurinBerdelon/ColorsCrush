@@ -74,7 +74,7 @@ export function FeedbackContentStep({ feedbackType, onFeedbackRestart, onFeedbac
                         className="sendButton"
                         disabled={comment.length === 0 || isSendingFeedback}
                     >
-                        {isSendingFeedback ? <Loading /> : 'Enviar Feedback'}
+                        {isSendingFeedback ? <Loading /> : 'Send Feedback'}
                     </button>
                 </footer>
             </Form>

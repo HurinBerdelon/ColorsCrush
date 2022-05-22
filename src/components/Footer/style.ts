@@ -9,6 +9,15 @@ export const Container = styled.footer`
 
     color: ${props => props.theme.colors.mainText};
 
+    .releasesButton {
+        color: ${props => props.theme.colors.mainText};
+        margin-left: 2rem;
+        
+        &:hover {
+            color: ${props => props.theme.colors.gray};
+        }
+    }
+
     div {
         display: flex;
         gap: 1rem;

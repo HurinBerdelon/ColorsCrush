@@ -32,6 +32,14 @@ export const Container = styled.div`
         margin-bottom: 2rem;
     }
 
+    .howToPlayButton {
+        color: ${props => props.theme.colors.mainText};
+
+        &:hover {
+            color: ${props => props.theme.colors.gray};
+        }
+    }
+
     h3 {
         margin-bottom: 1rem;
     }

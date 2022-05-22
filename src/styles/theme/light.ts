@@ -4,7 +4,7 @@ export default {
     colors: {
 
         background: '#FAFAFA',
-        boxColorTwo: '#F8F8F8',
+        boxColorTwo: '#F0F0F0',
         boxColorOne: '#E8E8E8',
         mainText: '#232320',
         secondaryText: '#AC8CCF',
