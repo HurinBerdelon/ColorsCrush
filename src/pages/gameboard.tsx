@@ -1,6 +1,7 @@
 import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { useState } from "react";
+import { Widget } from "../components/Feedback/Widget";
 import { GameBoard } from "../components/GameBoard";
 import { ScoreBoard } from "../components/ScoreBoard";
 import { ScoreRecords, TableGameSchema } from "../components/ScoreRecords";
@@ -32,6 +33,7 @@ export default function GamePage({ historicalScores }: GamePageProps): JSX.Eleme
             <ScoreBoard />
             <GameBoard />
             <ScoreRecords historical={historicalScores} />
+            <Widget />
         </GameBodyContainer>
     )
 }

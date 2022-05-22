@@ -14,10 +14,9 @@ export const Container = styled.div`
     color: ${props => props.theme.colors.mainText};
 
     h1 {
-        font-family: 'Smooch', cursive;
         margin-bottom: 2rem;
         font-size: 4rem;
-        letter-spacing: 0.25rem;
+        /* letter-spacing: 0.25rem; */
 
         span {
             font-family: 'Smooch', cursive;
