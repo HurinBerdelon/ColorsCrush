@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Container } from "./style"
 import { useGame } from "../../hooks/useGame"
 import { PlayerSchema } from "../../schema/player"
@@ -8,17 +8,30 @@ import Link from "next/link"
 
 export default function MainMenu(): JSX.Element {
 
-    const { player } = useGame()
+    const { player, setPlayer } = useGame()
     const [playerName, setPlayerName] = useState('')
 
-    function handleChoosenGame(game: string) {
+    useEffect(() => {
         const playerSaved: PlayerSchema = JSON.parse(localStorage.getItem('colors-crush-player'))
 
+        setPlayer(playerSaved)
+    }, [])
+
+    function handleChoosenGame(game: string) {
+
         localStorage.setItem('colors-crush-player', JSON.stringify({
-            name: playerName ? playerName : playerSaved.name,
+            name: playerName ? playerName : player.name,
             gamesAvailable: ['light'],
             currentTheme: game
         }))
+
+        if (!player) {
+            setPlayer({
+                name: playerName,
+                gamesAvailable: ['light'],
+                currentTheme: game
+            })
+        }
     }
 
     // const { colors } = useContext(ThemeContext)
@@ -51,11 +64,11 @@ export default function MainMenu(): JSX.Element {
                 {player
                     ? player.gamesAvailable.map(game =>
                     (<Link
-                        href="/gameboard"
                         key={game}
-                        prefetch
+                        href='/gameboard'
                     >
                         <a
+
                             onClick={() => handleChoosenGame(game)}
                         >
                             {game.toUpperCase()}
@@ -64,7 +77,6 @@ export default function MainMenu(): JSX.Element {
                     )
                     : <Link
                         href='/gameboard'
-                        prefetch
                     >
                         <a
                             onClick={() => handleChoosenGame('light')}

@@ -1,3 +1,4 @@
+import { ContentPasteSearchOutlined } from "@mui/icons-material";
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { squarePiecesTemplate } from "../config";
 import { PlayerSchema } from "../schema/player";
@@ -47,12 +48,10 @@ export function GameProvider({ children }: GameProviderProps) {
     const [squarePieces, setSquarePieces] = useState<string[]>([])
 
     useEffect(() => {
-        const player: PlayerSchema = JSON.parse(localStorage.getItem('colors-crush-player'))
         if (player) {
-            setPlayer(player)
             setSquarePieces(squarePiecesTemplate[player.currentTheme])
         }
-    }, [])
+    }, [player])
 
     return (
         <GameContext.Provider
