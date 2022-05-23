@@ -47,6 +47,7 @@ export function ReleasesModal({ handleCloseReleasesModal, isReleasesModalOpen }:
                     <li><CheckBoxOutlineBlankIcon /> Reset game without refreshing the page.</li>
                     <li><CheckBoxOutlineBlankIcon /> Translation for other languages.</li>
                     <li><CheckBoxOutlineBlankIcon /> New ways to score points.</li>
+                    <li><CheckBoxOutlineBlankIcon /> Support for smartphone browsers.</li>
                 </ul>
             </Container>
         </Modal>

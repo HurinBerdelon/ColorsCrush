@@ -10,6 +10,7 @@ import { ScoreRecords, TableGameSchema } from "../components/ScoreRecords";
 import { StartGameModal } from "../components/StartGameModal";
 import { api } from "../services/api";
 import { GameBodyContainer } from "../styles/GlobalStyle";
+import { HomeButton } from "../components/HomeButton";
 
 
 interface GamePageProps {
@@ -33,6 +34,9 @@ export default function GamePage({ historicalScores }: GamePageProps): JSX.Eleme
                 isOpen={isStartGameModalOpen}
                 onRequestClose={handleToggleStartGameModal}
             />
+
+            <HomeButton />
+
             <ScoreBoard />
             <GameBoard />
             <ScoreRecords historical={historicalScores} />
