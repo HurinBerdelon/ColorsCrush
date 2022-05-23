@@ -107,4 +107,21 @@ export const GameBodyContainer = styled.div`
     width: 100vw;
     height: 100vh;
     background: ${props => props.theme.colors.background};
+
+    .howToPlayButton {
+        color: ${props => props.theme.colors.secondaryText};
+
+        position: absolute;
+        top: 0.85rem;
+        right: 1.25rem;
+        
+        svg {
+            width: 3.5rem;
+            height: 3.5rem;
+
+            &:hover {
+                filter: brightness(1.2);
+            }
+        }
+    }
 `

@@ -20,6 +20,15 @@ export function HowToPlayModal({ handleCloseHowToPlayModal, isHowToPlayModalOpen
             overlayClassName='react-modal-overlay'
             className='react-modal-content'
         >
+
+            <button
+                type='button'
+                onClick={handleCloseHowToPlayModal}
+                className='react-modal-close'
+            >
+                <img src='/assets/close.svg' alt="close-modal-button" />
+            </button>
+
             <Container>
                 <h2>How To Play:</h2>
                 <ul>

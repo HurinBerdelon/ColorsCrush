@@ -3,7 +3,6 @@ import { Container } from "./style"
 import { useGame } from "../../hooks/useGame"
 import { PlayerSchema } from "../../schema/player"
 import Link from "next/link"
-import { HowToPlayModal } from "./HowToPlayModal"
 
 // import { ThemeContext } from 'styled-components'
 
@@ -11,7 +10,6 @@ export default function MainMenu(): JSX.Element {
 
     const { player } = useGame()
     const [playerName, setPlayerName] = useState('')
-    const [isHowToPlayModalOpen, setIsHowToPlayModalOpen] = useState(false)
 
     function handleChoosenGame(game: string) {
         const playerSaved: PlayerSchema = JSON.parse(localStorage.getItem('colors-crush-player'))
@@ -21,10 +19,6 @@ export default function MainMenu(): JSX.Element {
             gamesAvailable: ['light'],
             currentTheme: game
         }))
-    }
-
-    function handleOpenHowToPlayModal() {
-        setIsHowToPlayModalOpen(!isHowToPlayModalOpen)
     }
 
     // const { colors } = useContext(ThemeContext)
@@ -51,12 +45,6 @@ export default function MainMenu(): JSX.Element {
                     onChange={(event) => setPlayerName(event.target.value)}
                     placeholder='Your Name'
                 />}
-            <button
-                className="howToPlayButton"
-                onClick={handleOpenHowToPlayModal}
-            >
-                <h3>How To Play</h3>
-            </button>
 
             <h3>CHOOSE YOUR THEME TO PLAY</h3>
             <ul className="listOfGames">
@@ -85,11 +73,6 @@ export default function MainMenu(): JSX.Element {
                         </a>
                     </Link>}
             </ul>
-
-            <HowToPlayModal
-                handleCloseHowToPlayModal={handleOpenHowToPlayModal}
-                isHowToPlayModalOpen={isHowToPlayModalOpen}
-            />
 
         </Container>
     )
