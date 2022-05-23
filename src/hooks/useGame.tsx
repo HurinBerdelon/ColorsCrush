@@ -48,9 +48,19 @@ export function GameProvider({ children }: GameProviderProps) {
     const [squarePieces, setSquarePieces] = useState<string[]>([])
 
     useEffect(() => {
+        if (!player) {
+            const playerSaved = JSON.parse(localStorage.getItem('colors-crush-player'))
+            if (playerSaved) {
+                setPlayer(playerSaved)
+            }
+        }
+    }, [])
+
+    useEffect(() => {
         if (player) {
             setSquarePieces(squarePiecesTemplate[player.currentTheme])
         }
+
     }, [player])
 
     return (
