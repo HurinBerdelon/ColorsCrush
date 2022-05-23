@@ -22,6 +22,14 @@ export function ReleasesModal({ handleCloseReleasesModal, isReleasesModalOpen }:
             overlayClassName='react-modal-overlay'
             className='react-modal-content'
         >
+            <button
+                type='button'
+                onClick={handleCloseReleasesModal}
+                className='react-modal-close'
+            >
+                <img src='/assets/close.svg' alt="close-modal-button" />
+            </button>
+
             <Container>
                 <h2>Releases:</h2>
 
@@ -31,14 +39,14 @@ export function ReleasesModal({ handleCloseReleasesModal, isReleasesModalOpen }:
                     <li><CheckIcon /> Score beeing saved in database.</li>
                     <li><CheckIcon /> Top 10 scores on screen.</li>
                     <li><CheckIcon /> Widget to send some feedback.</li>
+                    <li><CheckIcon /> Widget with instructions about the game.</li>
 
                     <h4>Next Versions:</h4>
                     <li><CheckBoxOutlineBlankIcon /> Other themes as rewards.</li>
                     <li><CheckBoxOutlineBlankIcon /> Reset name feature.</li>
-                    <li><CheckBoxOutlineBlankIcon /> Reset game without refresh the page.</li>
+                    <li><CheckBoxOutlineBlankIcon /> Reset game without refreshing the page.</li>
                     <li><CheckBoxOutlineBlankIcon /> Translation for other languages.</li>
-
-
+                    <li><CheckBoxOutlineBlankIcon /> New ways to score points.</li>
                 </ul>
             </Container>
         </Modal>

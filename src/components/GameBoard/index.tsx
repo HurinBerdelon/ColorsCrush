@@ -81,6 +81,7 @@ export function GameBoard(): JSX.Element {
                     ))}
                 </div>
             </div>
+
         </Container>
     )
 }

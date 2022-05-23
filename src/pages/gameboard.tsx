@@ -1,13 +1,16 @@
 import { GetServerSideProps } from "next";
-import Head from "next/head";
 import { useState } from "react";
+import Head from "next/head";
+import HelpIcon from '@mui/icons-material/Help';
 import { Widget } from "../components/Feedback/Widget";
 import { GameBoard } from "../components/GameBoard";
+import { HowToPlayButton } from "../components/HowToPlay/HowToPlayButton";
 import { ScoreBoard } from "../components/ScoreBoard";
 import { ScoreRecords, TableGameSchema } from "../components/ScoreRecords";
 import { StartGameModal } from "../components/StartGameModal";
 import { api } from "../services/api";
 import { GameBodyContainer } from "../styles/GlobalStyle";
+
 
 interface GamePageProps {
     historicalScores: TableGameSchema[]
@@ -34,6 +37,11 @@ export default function GamePage({ historicalScores }: GamePageProps): JSX.Eleme
             <GameBoard />
             <ScoreRecords historical={historicalScores} />
             <Widget />
+
+            <HowToPlayButton className="howToPlayButton">
+                <HelpIcon />
+            </HowToPlayButton>
+
         </GameBodyContainer>
     )
 }
