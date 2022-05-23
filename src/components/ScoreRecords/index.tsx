@@ -39,13 +39,10 @@ export function ScoreRecords({ historical }: ScoreRecordsProps): JSX.Element {
                 setHistoricalScores(historicalScores)
             }
             return
-        }
-
-        if (historicalScores[historicalScores.length - 1].score < currentGame.score) {
+        } else if (historicalScores.length < 10 && historicalScores.length !== 0 && currentGame.score > 0) {
             const game = historicalScores.find(item => item.id === currentGame.id)
 
             if (!game) {
-                historicalScores.pop()
                 historicalScores.push({
                     ...currentGame,
                     currentGame: true
@@ -59,7 +56,29 @@ export function ScoreRecords({ historical }: ScoreRecordsProps): JSX.Element {
                 })
                 setHistoricalScores(historicalScores)
             }
+        } else {
+            if (historicalScores[historicalScores.length - 1].score < currentGame.score) {
+                const game = historicalScores.find(item => item.id === currentGame.id)
+
+                if (!game) {
+                    historicalScores.pop()
+                    historicalScores.push({
+                        ...currentGame,
+                        currentGame: true
+                    })
+                    setHistoricalScores(historicalScores)
+                } else {
+                    const index = historicalScores.indexOf(game)
+                    historicalScores[index] = { ...currentGame, currentGame: true }
+                    historicalScores.sort((a, b) => {
+                        return a.score > b.score ? -1 : a.score < b.score ? 1 : 0
+                    })
+                    setHistoricalScores(historicalScores)
+                }
+            }
         }
+
+
     }
 
     useEffect(() => {
