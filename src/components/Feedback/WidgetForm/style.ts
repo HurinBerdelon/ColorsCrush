@@ -17,7 +17,7 @@ export const Container = styled.div`
 
     /* width: px; */
 
-    @media (min-width: 768px) {
+    @media (min-width: 720px) {
         width: auto;
     }
 `

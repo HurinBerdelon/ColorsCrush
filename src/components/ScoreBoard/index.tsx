@@ -17,10 +17,10 @@ export function ScoreBoard(): JSX.Element {
     return (
         <Container percent={percent}>
             <div className="scores">
+                <h2>Score: {scoreDisplay}</h2>
                 <div className="scoreBox">
                     <div className="scoreBar"></div>
                 </div>
-                <h2>Score: {scoreDisplay}</h2>
                 <h3>{multiplies} x</h3>
             </div>
         </Container>

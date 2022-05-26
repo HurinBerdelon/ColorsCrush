@@ -11,6 +11,8 @@ import { StartGameModal } from "../components/StartGameModal";
 import { api } from "../services/api";
 import { GameBodyContainer } from "../styles/GlobalStyle";
 import { HomeButton } from "../components/HomeButton";
+import { ScoreRecordsModal } from "../components/ScoreRecordsModal";
+import { ScoreRecordsModalButton } from "../components/ScoreRecordsModal/ScoreRecordsModalButton";
 
 
 interface GamePageProps {
@@ -20,26 +22,41 @@ interface GamePageProps {
 export default function GamePage({ historicalScores }: GamePageProps): JSX.Element {
 
     const [isStartGameModalOpen, setIsStartGameModalOpen] = useState(true)
+    const [isScoreRecordsModalOpen, setIsScoreRecordsModalOpen] = useState(true)
 
     function handleToggleStartGameModal() {
         setIsStartGameModalOpen(!isStartGameModalOpen)
+    }
+
+    function handleOpenScoreRecordsModal() {
+        setIsScoreRecordsModalOpen(!isScoreRecordsModalOpen)
     }
 
     return (
         <GameBodyContainer>
             <Head>
                 <title>GameBoard | ColorsCrush</title>
+                <meta name="viewport" content=
+                    "width=device-width, user-scalable=no" />
             </Head>
             <StartGameModal
                 isOpen={isStartGameModalOpen}
                 onRequestClose={handleToggleStartGameModal}
             />
 
+            <ScoreRecordsModal
+                isOpen={isScoreRecordsModalOpen}
+                onRequestClose={handleOpenScoreRecordsModal}
+                historicalScores={historicalScores}
+            />
+
+
             <HomeButton />
 
             <ScoreBoard />
             <GameBoard />
             <ScoreRecords historical={historicalScores} />
+            <ScoreRecordsModalButton handleOpenScoreRecordsModal={handleOpenScoreRecordsModal} />
             <Widget />
 
             <HowToPlayButton className="howToPlayButton">

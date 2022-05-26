@@ -15,7 +15,7 @@ interface handleDragEndProps {
 
 }
 
-export function handleDragEnd(event,
+export function handleDragEnd(
     {
         currentPieceArrangement,
         setCurrentPieceArrangement,

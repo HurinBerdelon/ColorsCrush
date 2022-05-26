@@ -10,9 +10,17 @@ export const Container = styled.div<ContainerProps>`
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-bottom: 0.5rem;
+
+
+    @media (max-width: 720px) {
+        width: 100%;
+        height: 20%;
+        padding: 0 0.5rem;
+        padding-bottom: 2rem;
+    }
 
     .scores {
-
         height: 600px;
         width: 80%;
         background: linear-gradient(
@@ -53,8 +61,37 @@ export const Container = styled.div<ContainerProps>`
         h3 {
             font-size: 2rem;
         }
-    
-}
 
+        @media (max-width: 720px) {
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            background: none;
+
+            .scoreBox {
+                height: 3rem;
+                width: 80%;
+                border: 0.75rem solid ${props => props.theme.colors.gray};
+                border-radius: 0.5rem 0.5rem 0.5rem 0.5rem ;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+            
+                .scoreBar {
+                    background: linear-gradient(
+                        to top, 
+                        ${props => props.theme.colors.scoreBarOne}, 
+                        ${props => props.theme.colors.scoreBarTwo}
+                        );
+                    width: ${props => props.percent}%;
+                    height: 1.5rem;
+                }        
+            }
+
+            h3 {
+                font-size: 2rem;
+            }
+        }
     
+    }       
 `

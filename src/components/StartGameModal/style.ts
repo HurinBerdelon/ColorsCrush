@@ -31,6 +31,7 @@ export const Container = styled.div`
                 filter: brightness(0.9);
             }
         }
+
     }
 
     .howToPlayButton {

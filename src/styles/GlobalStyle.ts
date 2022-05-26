@@ -47,6 +47,21 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
         font-family: 'Poppins', sans-serif;
+        overflow: hidden;
+    }
+
+    @media (max-width: 1080px) {
+        html {
+            font-size: 93.75%;
+            overscroll-behavior-y: contain;
+        }
+    }   
+
+    @media (max-width: 720px) {
+        html {
+            font-size: 87.5%;
+            overscroll-behavior-y: contain;
+        }
     }
 
     button {
@@ -107,6 +122,15 @@ export const GameBodyContainer = styled.div`
     width: 100vw;
     height: 100vh;
     background: ${props => props.theme.colors.background};
+    
+    @media (max-width: 720px) {
+        width: 100vw;
+        height: calc(100vh - 4rem);
+        display: flex;
+
+        flex-direction: column-reverse;
+        justify-content: space-evenly;
+    }
 
     .howToPlayButton {
         color: ${props => props.theme.colors.secondaryText};
@@ -114,6 +138,11 @@ export const GameBodyContainer = styled.div`
         position: absolute;
         top: 0.85rem;
         right: 1.25rem;
+
+        @media (max-width: 720px) {
+            top: 0.5rem;
+            right: 0.5rem;
+        }
         
         svg {
             width: 3.5rem;

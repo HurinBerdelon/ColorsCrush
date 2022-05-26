@@ -60,12 +60,36 @@ export function GameBoard(): JSX.Element {
                             alt={candyColor}
                             data-id={index}
                             draggable={isPlaying}
-                            onDragStart={(event) => handleDragStart(event, { setSquaredBeingDragged })}
+                            onDragStart={(event) => handleDragStart(event.target, { setSquaredBeingDragged })}
                             onDragOver={(event) => event.preventDefault()}
                             onDragEnter={(event) => event.preventDefault()}
                             onDragLeave={(event) => event.preventDefault()}
-                            onDrop={(event) => handleDrop(event, { setSquaredBeingReplaced })}
-                            onDragEnd={(event) => handleDragEnd(event,
+                            onDrop={(event) => handleDrop(event.target, { setSquaredBeingReplaced })}
+                            onTouchStart={(event) => handleDragStart(event.target, { setSquaredBeingDragged })}
+                            onTouchMove={(event) => {
+                                const eventTarget = document.elementFromPoint(
+                                    event.nativeEvent.changedTouches[0].clientX,
+                                    event.nativeEvent.changedTouches[0].clientY
+                                )
+
+                                if (squaredBeingReplaced != eventTarget) {
+                                    handleDrop(eventTarget, { setSquaredBeingReplaced })
+                                }
+                            }}
+                            onTouchEnd={() => handleDragEnd(
+                                {
+                                    squaredBeingReplaced,
+                                    setSquaredBeingReplaced,
+                                    squaredBeingDragged,
+                                    setSquaredBeingDragged,
+                                    currentPieceArrangement,
+                                    setCurrentPieceArrangement,
+                                    Blank,
+                                    isPlaying,
+                                    setScoreDisplay,
+                                }
+                            )}
+                            onDragEnd={() => handleDragEnd(
                                 {
                                     squaredBeingReplaced,
                                     setSquaredBeingReplaced,
