@@ -10,7 +10,7 @@ export function ScoreRecordsModalButton({ handleOpenScoreRecordsModal }: ScoreRe
         <Container
             onClick={handleOpenScoreRecordsModal}
         >
-            Show Records
+            Show Ranking
         </Container>
     )
 }

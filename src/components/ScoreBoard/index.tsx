@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useGame } from "../../hooks/useGame";
 import { Container } from "./style";
+import { ThemeContext } from 'styled-components'
 
 export function ScoreBoard(): JSX.Element {
 
@@ -14,8 +15,14 @@ export function ScoreBoard(): JSX.Element {
 
     }, [scoreDisplay])
 
+    const { colors } = useContext(ThemeContext)
+
     return (
-        <Container percent={percent}>
+        <Container
+            percent={percent}
+            barColorBegin={colors.scoreBar[multiplies % 7]?.begin}
+            barColorEnd={colors.scoreBar[multiplies % 7]?.end}
+        >
             <div className="scores">
                 <h2>Score: {scoreDisplay}</h2>
                 <div className="scoreBox">

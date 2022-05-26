@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 interface ContainerProps {
     percent: number
+    barColorBegin: string
+    barColorEnd: string
 }
 
 export const Container = styled.div<ContainerProps>`
@@ -38,22 +40,22 @@ export const Container = styled.div<ContainerProps>`
         color: ${props => props.theme.colors.mainText};
         
         .scoreBox {
-            background: ${props => props.theme.colors.black};
+            background: linear-gradient(
+                        to top, 
+                        ${props => props.barColorBegin}, 
+                        ${props => props.barColorEnd}
+                        );
             border: 1rem solid ${props => props.theme.colors.gray};
             height: 50%;
             width: 4rem;
             border-radius: 1rem 1rem 0.5rem 0.5rem ;
             display: flex;
-            align-items: flex-end;
+            align-items: flex-start;
             justify-content: center;
         
             .scoreBar {
-                background: linear-gradient(
-                    to top, 
-                    ${props => props.theme.colors.scoreBarOne}, 
-                    ${props => props.theme.colors.scoreBarTwo}
-                    );
-                height: ${props => props.percent}%;
+                background: ${props => props.theme.colors.black};
+                height: ${props => (100 - props.percent)}%;
                 width: 2rem;
             }        
         }
@@ -75,15 +77,17 @@ export const Container = styled.div<ContainerProps>`
                 border-radius: 0.5rem 0.5rem 0.5rem 0.5rem ;
                 display: flex;
                 align-items: center;
-                justify-content: flex-start;
+                justify-content: flex-end;
+
+                background: linear-gradient(
+                        to right, 
+                        ${props => props.barColorBegin}, 
+                        ${props => props.barColorEnd}
+                        );
             
                 .scoreBar {
-                    background: linear-gradient(
-                        to top, 
-                        ${props => props.theme.colors.scoreBarOne}, 
-                        ${props => props.theme.colors.scoreBarTwo}
-                        );
-                    width: ${props => props.percent}%;
+                    background: ${props => props.theme.colors.black};
+                    width: ${props => (100 - props.percent)}%;
                     height: 1.5rem;
                 }        
             }
