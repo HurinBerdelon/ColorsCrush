@@ -22,7 +22,7 @@ interface GamePageProps {
 export default function GamePage({ historicalScores }: GamePageProps): JSX.Element {
 
     const [isStartGameModalOpen, setIsStartGameModalOpen] = useState(true)
-    const [isScoreRecordsModalOpen, setIsScoreRecordsModalOpen] = useState(true)
+    const [isScoreRecordsModalOpen, setIsScoreRecordsModalOpen] = useState(false)
 
     function handleToggleStartGameModal() {
         setIsStartGameModalOpen(!isStartGameModalOpen)

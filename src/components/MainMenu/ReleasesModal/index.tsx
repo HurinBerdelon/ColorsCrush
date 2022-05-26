@@ -41,13 +41,15 @@ export function ReleasesModal({ handleCloseReleasesModal, isReleasesModalOpen }:
                     <li><CheckIcon /> Widget to send some feedback.</li>
                     <li><CheckIcon /> Widget with instructions about the game.</li>
 
+                    <h4>Version 0.3.0:</h4>
+                    <li><CheckIcon /> Working on Mobile browsers.</li>
+
                     <h4>Next Versions:</h4>
                     <li><CheckBoxOutlineBlankIcon /> Other themes as rewards.</li>
                     <li><CheckBoxOutlineBlankIcon /> Reset name feature.</li>
                     <li><CheckBoxOutlineBlankIcon /> Reset game without refreshing the page.</li>
                     <li><CheckBoxOutlineBlankIcon /> Translation for other languages.</li>
                     <li><CheckBoxOutlineBlankIcon /> New ways to score points.</li>
-                    <li><CheckBoxOutlineBlankIcon /> Support for smartphone browsers.</li>
                 </ul>
             </Container>
         </Modal>

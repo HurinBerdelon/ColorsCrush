@@ -22,9 +22,14 @@ export function GameBoard(): JSX.Element {
         setSquaredBeingReplaced,
         setScoreDisplay,
         isPlaying,
+        setIsGameLoading,
         Blank,
-        squarePieces
+        squarePieces,
     } = useGame()
+
+    useEffect(() => {
+        setIsGameLoading(false)
+    }, [])
 
     useEffect(() => {
         createBoard({ setCurrentPieceArrangement, squarePieces })

@@ -18,6 +18,8 @@ interface GameContextData {
     setScoreDisplay(score): void
     isPlaying: boolean
     setIsPlaying(isPlaying: boolean): void
+    isGameLoading: boolean
+    setIsGameLoading(isGameLoading: boolean): void
     Blank: string
     player: PlayerSchema
     setPlayer(player: PlayerSchema): void
@@ -42,6 +44,7 @@ export function GameProvider({ children }: GameProviderProps) {
     const [squaredBeingReplaced, setSquaredBeingReplaced] = useState(null)
     const [scoreDisplay, setScoreDisplay] = useState(0)
     const [isPlaying, setIsPlaying] = useState(false)
+    const [isGameLoading, setIsGameLoading] = useState(false)
 
     // Player States
     const [player, setPlayer] = useState<PlayerSchema>()
@@ -78,6 +81,8 @@ export function GameProvider({ children }: GameProviderProps) {
                 setScoreDisplay,
                 isPlaying,
                 setIsPlaying,
+                isGameLoading,
+                setIsGameLoading,
                 Blank,
                 player,
                 setPlayer,
