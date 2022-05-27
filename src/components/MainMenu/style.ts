@@ -9,7 +9,6 @@ export const Container = styled.div`
     width: 100vw;
     height: calc(100vh - 1.6rem);
     background: ${props => props.theme.colors.background};
-    overflow: hidden;
 
     color: ${props => props.theme.colors.mainText};
 

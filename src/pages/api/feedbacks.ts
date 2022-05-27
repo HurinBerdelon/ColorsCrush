@@ -10,22 +10,16 @@ interface BodyRequestProps {
 
 export default async (request: NextApiRequest, response: NextApiResponse) => {
 
-    const isDevelopingEnv = process.env.NODE_ENV
+    if (request.method === 'POST') {
 
-    if (isDevelopingEnv) {
+        const data: BodyRequestProps = request.body
 
-    } else {
-
-        if (request.method === 'POST') {
-
-            const data: BodyRequestProps = request.body
-
-            await feedback_api.post('/feedbacks', {
-                type: data.type,
-                comment: data.comment,
-                screenshot: data.screenshot
-            })
-        }
+        await feedback_api.post('/feedbacks', {
+            type: data.type,
+            comment: data.comment,
+            screenshot: data.screenshot
+        })
     }
+
     response.json({ redirect: true })
 }

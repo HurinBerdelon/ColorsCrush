@@ -1,7 +1,8 @@
-import { ContentPasteSearchOutlined } from "@mui/icons-material";
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { squarePiecesTemplate } from "../config";
+import { GameSchema } from "../schema/game";
 import { PlayerSchema } from "../schema/player";
+import { v4 as uuidv4 } from 'uuid'
 
 const Blank = '/images/blank.png'
 
@@ -25,6 +26,8 @@ interface GameContextData {
     setPlayer(player: PlayerSchema): void
     squarePieces: string[]
     setSquarePieces(squarePieces: string[]): void
+    game: GameSchema,
+    setGame(game: GameSchema): void
 }
 
 interface GameProviderProps {
@@ -49,6 +52,12 @@ export function GameProvider({ children }: GameProviderProps) {
     // Player States
     const [player, setPlayer] = useState<PlayerSchema>()
     const [squarePieces, setSquarePieces] = useState<string[]>([])
+    const [game, setGame] = useState<GameSchema>({
+        id: uuidv4(),
+        playerName: '',
+        score: 0,
+        theme: ''
+    })
 
     useEffect(() => {
         if (!player) {
@@ -87,7 +96,9 @@ export function GameProvider({ children }: GameProviderProps) {
                 player,
                 setPlayer,
                 squarePieces,
-                setSquarePieces
+                setSquarePieces,
+                game,
+                setGame,
             }}
         >
             {children}

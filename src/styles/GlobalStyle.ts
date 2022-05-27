@@ -47,20 +47,22 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
         font-family: 'Poppins', sans-serif;
+        overscroll-behavior-y: contain;
+    }
+
+    body {
         overflow: hidden;
     }
 
     @media (max-width: 1080px) {
         html {
             font-size: 93.75%;
-            overscroll-behavior-y: contain;
         }
     }   
 
     @media (max-width: 720px) {
         html {
             font-size: 87.5%;
-            overscroll-behavior-y: contain;
         }
     }
 

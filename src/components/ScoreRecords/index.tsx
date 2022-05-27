@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import dayjs from "dayjs";
-import { v4 as uuidv4 } from 'uuid'
 import { Container } from "./style";
 import { useGame } from "../../hooks/useGame";
 import { GameSchema } from "../../schema/game";
@@ -18,15 +17,9 @@ interface ScoreRecordsProps {
 
 export function ScoreRecords({ historical }: ScoreRecordsProps): JSX.Element {
 
-    const { player, scoreDisplay } = useGame()
+    const { player, scoreDisplay, game, setGame } = useGame()
     const [historicalScores, setHistoricalScores] = useState<TableGameSchema[]>(historical)
     const [timestamp, setTimestamp] = useState(dayjs().unix())
-    const [game, setGame] = useState<GameSchema>({
-        id: uuidv4(),
-        playerName: '',
-        score: 0,
-        theme: ''
-    })
 
     function updateHistoricalScores(currentGame: GameSchema) {
 

@@ -20,32 +20,32 @@ export default {
 
         scoreBar: {
             0: {
+                begin: '#ccff99',
+                end: '#fedb7c',
+            },
+            1: {
                 begin: '#fedb7c',
                 end: '#ee9c5e',
             },
-            1: {
+            2: {
                 begin: '#ee9c5e',
                 end: '#f48d7d',
             },
-            2: {
+            3: {
                 begin: '#f48d7d',
                 end: '#ff99cc',
             },
-            3: {
+            4: {
                 begin: '#ff99cc',
                 end: '#d684ff',
             },
-            4: {
+            5: {
                 begin: '#d684ff',
                 end: '#A3B2F5',
             },
-            5: {
+            6: {
                 begin: '#A3B2F5',
                 end: '#ccff99',
-            },
-            6: {
-                begin: '#ccff99',
-                end: '#fedb7c',
             },
         }
     },

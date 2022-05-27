@@ -13,7 +13,7 @@ import { GameBodyContainer } from "../styles/GlobalStyle";
 import { HomeButton } from "../components/HomeButton";
 import { ScoreRecordsModal } from "../components/ScoreRecordsModal";
 import { ScoreRecordsModalButton } from "../components/ScoreRecordsModal/ScoreRecordsModalButton";
-
+import { ToastContainer } from "react-toastify";
 
 interface GamePageProps {
     historicalScores: TableGameSchema[]
@@ -34,6 +34,7 @@ export default function GamePage({ historicalScores }: GamePageProps): JSX.Eleme
 
     return (
         <GameBodyContainer>
+            <ToastContainer />
             <Head>
                 <title>GameBoard | ColorsCrush</title>
                 <meta name="viewport" content=
@@ -62,7 +63,6 @@ export default function GamePage({ historicalScores }: GamePageProps): JSX.Eleme
             <HowToPlayButton className="howToPlayButton">
                 <HelpIcon />
             </HowToPlayButton>
-
         </GameBodyContainer>
     )
 }

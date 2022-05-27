@@ -64,6 +64,30 @@ export const Container = styled.div<ContainerProps>`
             font-size: 2rem;
         }
 
+        .interactionButtons {
+            width: 80%;
+            display: flex;
+            justify-content: space-evenly;
+
+            button {
+                background: ${props => props.theme.colors.secondaryText};
+                color: ${props => props.theme.colors.white};
+                
+                padding: 0.25rem 0.5rem;
+                border-radius: 0.25rem;
+
+                &:hover {
+                    filter: brightness(1.2)
+                }
+
+                &:disabled{
+                    pointer-events: none;
+                }
+            }
+        }
+
+
+
         @media (max-width: 720px) {
             width: 100%;
             height: 100%;
