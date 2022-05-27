@@ -72,6 +72,10 @@ export const Container = styled.div<ContainerProps>`
             button {
                 background: ${props => props.theme.colors.secondaryText};
                 color: ${props => props.theme.colors.white};
+                width: 42%;
+
+                display: flex;
+                justify-content: center;
                 
                 padding: 0.25rem 0.5rem;
                 border-radius: 0.25rem;

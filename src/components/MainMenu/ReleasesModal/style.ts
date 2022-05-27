@@ -9,13 +9,13 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     
-
     text-align: justify;
 
     ul {
         list-style: none;
         overflow-y: auto;
-
+        
+        padding-right: 0.825rem;
 
         li {
             display: flex;

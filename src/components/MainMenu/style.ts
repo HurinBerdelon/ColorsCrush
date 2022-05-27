@@ -33,6 +33,7 @@ export const Container = styled.div`
         height: 2rem;
         font-size: 1.125rem;
         margin-bottom: 2rem;
+        text-align: center;
     }
 
     .howToPlayButton {
