@@ -64,8 +64,6 @@ export const Container = styled.section`
         justify-content: center;
         align-items: center;
         padding: 0.5rem;
-        background: #F00;
-        margin-bottom: 1rem;
 
         .game {
             width: 100%;
