@@ -9,14 +9,17 @@ export const Container = styled.div`
     width: 100vw;
     height: calc(100vh - 1.6rem);
     background: ${props => props.theme.colors.background};
-    overflow: hidden;
 
     color: ${props => props.theme.colors.mainText};
+
+    @media (max-width: 720px) {
+        text-align: center;
+        height: calc(100vh - 8.8rem);
+    }
 
     h1 {
         margin-bottom: 2rem;
         font-size: 4rem;
-        /* letter-spacing: 0.25rem; */
 
         span {
             font-family: 'Smooch', cursive;
@@ -30,6 +33,7 @@ export const Container = styled.div`
         height: 2rem;
         font-size: 1.125rem;
         margin-bottom: 2rem;
+        text-align: center;
     }
 
     .howToPlayButton {

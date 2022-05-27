@@ -27,8 +27,8 @@ export function Footer(): JSX.Element {
             <div>
                 Developed by Fernando Cardozo (HurinBerdelon)
                 <ul className="mediaLinks">
-                    <a href="https://github.com/HurinBerdelon/candyCrush"><GitHubIcon /></a>
-                    <a href="https://www.linkedin.com/in/fernando-henrique-p-cardozo/"><LinkedInIcon /> </a>
+                    <a target='_blank' href="https://github.com/HurinBerdelon/candyCrush"><GitHubIcon /></a>
+                    <a target='_blank' href="https://www.linkedin.com/in/fernando-henrique-p-cardozo/"><LinkedInIcon /> </a>
                 </ul>
             </div>
 

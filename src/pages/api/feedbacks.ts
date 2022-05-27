@@ -9,6 +9,7 @@ interface BodyRequestProps {
 }
 
 export default async (request: NextApiRequest, response: NextApiResponse) => {
+
     if (request.method === 'POST') {
 
         const data: BodyRequestProps = request.body
@@ -19,5 +20,6 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
             screenshot: data.screenshot
         })
     }
+
     response.json({ redirect: true })
 }

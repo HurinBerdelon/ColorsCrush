@@ -8,6 +8,10 @@ export const Container = styled.div`
     align-items: center;
     color: ${props => props.theme.colors.mainText};
 
+    @media (max-width: 720px) {
+        display: none;
+    }
+    
     .content {
         height: 600px;
         width: 90%;
@@ -23,7 +27,6 @@ export const Container = styled.div`
         align-items: center;
 
         .table {
-            /* background: var(--white); */
             width: 90%;
             max-width: 100%;
             padding: 1rem;

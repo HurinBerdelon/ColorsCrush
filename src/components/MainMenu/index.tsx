@@ -3,12 +3,13 @@ import { Container } from "./style"
 import { useGame } from "../../hooks/useGame"
 import { PlayerSchema } from "../../schema/player"
 import Link from "next/link"
+import { Loading } from "../Feedback/WidgetForm/ScreenshotButton.tsx/Loading"
 
 // import { ThemeContext } from 'styled-components'
 
 export default function MainMenu(): JSX.Element {
 
-    const { player, setPlayer } = useGame()
+    const { player, setPlayer, isGameLoading, setIsGameLoading } = useGame()
     const [playerName, setPlayerName] = useState('')
 
     useEffect(() => {
@@ -18,6 +19,8 @@ export default function MainMenu(): JSX.Element {
     }, [])
 
     function handleChoosenGame(game: string) {
+
+        setIsGameLoading(true)
 
         localStorage.setItem('colors-crush-player', JSON.stringify({
             name: playerName ? playerName : player.name,
@@ -61,29 +64,31 @@ export default function MainMenu(): JSX.Element {
 
             <h3>CHOOSE YOUR THEME TO PLAY</h3>
             <ul className="listOfGames">
-                {player
-                    ? player.gamesAvailable.map(game =>
-                    (<Link
-                        key={game}
-                        href='/gameboard'
-                    >
-                        <a
+                {isGameLoading ? <Loading />
+                    :
+                    (player
+                        ? player.gamesAvailable.map(game =>
+                        (<Link
+                            key={game}
+                            href='/gameboard'
+                        >
+                            <a
 
-                            onClick={() => handleChoosenGame(game)}
+                                onClick={() => handleChoosenGame(game)}
+                            >
+                                {game.toUpperCase()}
+                            </a>
+                        </Link>)
+                        )
+                        : <Link
+                            href='/gameboard'
                         >
-                            {game.toUpperCase()}
-                        </a>
-                    </Link>)
-                    )
-                    : <Link
-                        href='/gameboard'
-                    >
-                        <a
-                            onClick={() => handleChoosenGame('light')}
-                        >
-                            LIGHT
-                        </a>
-                    </Link>}
+                            <a
+                                onClick={() => handleChoosenGame('light')}
+                            >
+                                LIGHT
+                            </a>
+                        </Link>)}
             </ul>
 
         </Container>

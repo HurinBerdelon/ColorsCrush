@@ -14,7 +14,7 @@ export const Container = styled.div`
     .button {
         background: ${props => props.theme.colors.secondaryText};
         border-radius: 2rem;
-        padding: 0 12px;
+        padding: 0 0.75rem;
         height: 3rem;
         color: ${props => props.theme.colors.white};
 
@@ -22,8 +22,8 @@ export const Container = styled.div`
         align-items: center;
 
         .icon {
-            width: 24px;
-            height: 24px;
+            width: 1.5rem;
+            height: 1.5rem;
         }
 
         .span {
