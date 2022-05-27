@@ -10,7 +10,7 @@ import { Loading } from "../Feedback/WidgetForm/ScreenshotButton.tsx/Loading"
 export default function MainMenu(): JSX.Element {
 
     const { player, setPlayer, isGameLoading, setIsGameLoading } = useGame()
-    const [playerName, setPlayerName] = useState('')
+    const [playerName, setPlayerName] = useState('anonymous')
 
     useEffect(() => {
         const playerSaved: PlayerSchema = JSON.parse(localStorage.getItem('colors-crush-player'))
