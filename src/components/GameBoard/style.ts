@@ -58,4 +58,36 @@ export const Container = styled.section`
             }
         }
     }
+
+    @media (max-width: 420px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.5rem;
+        background: #F00;
+        margin-bottom: 1rem;
+
+        .game {
+            width: 100%;
+            height: auto;
+            display: flex;
+            gap: 1px;
+            flex-wrap: wrap;
+            padding: 16px;
+            background: linear-gradient(
+                to top,
+                ${props => props.theme.colors.boxColorOne},
+                ${props => props.theme.colors.boxColorTwo}
+                );
+            border-radius: 0.5rem;
+
+            img {
+                object-fit: contain;
+                width: calc((100% - 8px)/8);
+                height: calc((100% - 8px)/8);
+                cursor: pointer;
+                border-radius: 100%;
+            }
+        }
+    }
 `

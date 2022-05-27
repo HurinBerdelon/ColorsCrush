@@ -124,6 +124,64 @@ export const Container = styled.div<ContainerProps>`
                 font-size: 2rem;
             }
         }
+
+        @media (max-width: 420px) {
+            margin-top: 3rem;
+
+            .scoreBox {
+                height: 2.5rem;
+                width: 80%;
+                border: 0.75rem solid ${props => props.theme.colors.gray};
+                border-radius: 0.5rem 0.5rem 0.5rem 0.5rem ;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+
+                background: linear-gradient(
+                        to right, 
+                        ${props => props.barColorBegin}, 
+                        ${props => props.barColorEnd}
+                        );
+            
+                .scoreBar {
+                    background: ${props => props.theme.colors.black};
+                    width: ${props => (100 - props.percent)}%;
+                    height: 1.2rem;
+                }        
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+
+            h3 {
+                font-size: 1.4rem;
+            }
+
+            .interactionButtons {
+            width: 70%;
+
+            button {
+                background: ${props => props.theme.colors.secondaryText};
+                color: ${props => props.theme.colors.white};
+                width: 40%;
+
+                display: flex;
+                justify-content: center;
+                
+                padding: 0.25rem 0.25rem;
+                border-radius: 0.25rem;
+
+                &:hover {
+                    filter: brightness(1.2)
+                }
+
+                &:disabled{
+                    pointer-events: none;
+                }
+            }
+        }
+        }
     
     }       
 `
