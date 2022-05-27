@@ -126,7 +126,7 @@ export const Container = styled.div<ContainerProps>`
         }
 
         @media (max-width: 420px) {
-            margin-top: 3rem;
+            margin-top: 2.75rem;
 
             .scoreBox {
                 height: 2.5rem;
