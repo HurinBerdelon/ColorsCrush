@@ -20,7 +20,6 @@ export function StartGameModal({ isOpen, onRequestClose }: StartGameModalProps):
     return (
         <Modal
             isOpen={isOpen}
-            onRequestClose={() => { }}
             overlayClassName='react-modal-overlay'
             className='react-modal-content'
         >

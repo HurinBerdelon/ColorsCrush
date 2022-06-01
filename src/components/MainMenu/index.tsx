@@ -9,6 +9,8 @@ import project from '../../../package.json'
 
 // import { ThemeContext } from 'styled-components'
 
+export const LOCALSTORE_ITEM = `colors-crush-player_v${project.version}`
+
 export default function MainMenu(): JSX.Element {
 
     const { player, setPlayer, isGameLoading, setIsGameLoading } = useGame()
@@ -16,7 +18,7 @@ export default function MainMenu(): JSX.Element {
 
     useEffect(() => {
         localStorage.removeItem('colors-crush-player')
-        const playerSaved: PlayerSchema = JSON.parse(localStorage.getItem(`colors-crush-player_v${project.version}`))
+        const playerSaved: PlayerSchema = JSON.parse(localStorage.getItem(LOCALSTORE_ITEM))
 
         setPlayer(playerSaved)
     }, [])
@@ -25,7 +27,7 @@ export default function MainMenu(): JSX.Element {
 
         setIsGameLoading(true)
 
-        localStorage.setItem(`colors-crush-player_v${project.version}`, JSON.stringify({
+        localStorage.setItem(LOCALSTORE_ITEM, JSON.stringify({
             name: player?.name ? player.name : playerName,
             gamesAvailable: ['light'],
             currentTheme: game

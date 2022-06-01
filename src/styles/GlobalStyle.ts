@@ -91,6 +91,16 @@ export const GlobalStyle = createGlobalStyle`
         justify-content: center;
     }
 
+    .react-modal-content_themeReward {
+        width: 100%;
+        max-width: 800px;
+
+        background: var(--gray-50);
+        padding: 2rem;
+        position: relative;
+        border-radius: 0.5rem;
+    }
+
     .react-modal-content {
         width: 100%;
         max-width: 400px;
