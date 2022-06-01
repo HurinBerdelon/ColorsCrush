@@ -3,6 +3,7 @@ import { squarePiecesTemplate } from "../config";
 import { GameSchema } from "../schema/game";
 import { PlayerSchema } from "../schema/player";
 import { v4 as uuidv4 } from 'uuid'
+import { LOCALSTORE_ITEM } from "../components/MainMenu";
 
 const Blank = '/images/blank.png'
 
@@ -61,7 +62,7 @@ export function GameProvider({ children }: GameProviderProps) {
 
     useEffect(() => {
         if (!player) {
-            const playerSaved = JSON.parse(localStorage.getItem('colors-crush-player'))
+            const playerSaved = JSON.parse(localStorage.getItem(LOCALSTORE_ITEM))
             if (playerSaved) {
                 setPlayer(playerSaved)
             }
