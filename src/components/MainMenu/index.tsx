@@ -5,6 +5,8 @@ import { PlayerSchema } from "../../schema/player"
 import Link from "next/link"
 import { Loading } from "../Feedback/WidgetForm/ScreenshotButton.tsx/Loading"
 
+import project from '../../../package.json'
+
 // import { ThemeContext } from 'styled-components'
 
 export default function MainMenu(): JSX.Element {
@@ -13,7 +15,8 @@ export default function MainMenu(): JSX.Element {
     const [playerName, setPlayerName] = useState('anonymous')
 
     useEffect(() => {
-        const playerSaved: PlayerSchema = JSON.parse(localStorage.getItem('colors-crush-player'))
+        localStorage.removeItem('colors-crush-player')
+        const playerSaved: PlayerSchema = JSON.parse(localStorage.getItem(`colors-crush-player_v${project.version}`))
 
         setPlayer(playerSaved)
     }, [])
@@ -22,8 +25,8 @@ export default function MainMenu(): JSX.Element {
 
         setIsGameLoading(true)
 
-        localStorage.setItem('colors-crush-player', JSON.stringify({
-            name: playerName ? playerName : player.name,
+        localStorage.setItem(`colors-crush-player_v${project.version}`, JSON.stringify({
+            name: player?.name ? player.name : playerName,
             gamesAvailable: ['light'],
             currentTheme: game
         }))
