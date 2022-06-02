@@ -1,9 +1,9 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
-import { squarePiecesTemplate } from "../config";
+import { LOCALSTORE_ITEM, squarePiecesTemplate } from "../config";
 import { GameSchema } from "../schema/game";
 import { PlayerSchema } from "../schema/player";
 import { v4 as uuidv4 } from 'uuid'
-import { LOCALSTORE_ITEM } from "../components/MainMenu";
+import { useRouter } from "next/router";
 
 const Blank = '/images/blank.png'
 
@@ -60,13 +60,18 @@ export function GameProvider({ children }: GameProviderProps) {
         theme: ''
     })
 
+    const router = useRouter()
+
     useEffect(() => {
         if (!player) {
             const playerSaved = JSON.parse(localStorage.getItem(LOCALSTORE_ITEM))
             if (playerSaved) {
                 setPlayer(playerSaved)
+            } else {
+                router.push('/')
             }
         }
+
     }, [])
 
     useEffect(() => {

@@ -14,6 +14,9 @@ import { HomeButton } from "../components/HomeButton";
 import { ScoreRecordsModal } from "../components/ScoreRecordsModal";
 import { ScoreRecordsModalButton } from "../components/ScoreRecordsModal/ScoreRecordsModalButton";
 import { ToastContainer } from "react-toastify";
+import { ThemeRewardModal } from "../components/ThemeRewardModal";
+import { useTheme } from "../hooks/useTheme";
+import { ThemeProvider } from "styled-components";
 
 interface GamePageProps {
     historicalScores: TableGameSchema[]
@@ -23,6 +26,8 @@ export default function GamePage({ historicalScores }: GamePageProps): JSX.Eleme
 
     const [isStartGameModalOpen, setIsStartGameModalOpen] = useState(true)
     const [isScoreRecordsModalOpen, setIsScoreRecordsModalOpen] = useState(false)
+    const [isThemeRewardModalOpen, setIsThemeRewardModalOpen] = useState(false)
+    const { theme } = useTheme()
 
     function handleToggleStartGameModal() {
         setIsStartGameModalOpen(!isStartGameModalOpen)
@@ -32,38 +37,56 @@ export default function GamePage({ historicalScores }: GamePageProps): JSX.Eleme
         setIsScoreRecordsModalOpen(!isScoreRecordsModalOpen)
     }
 
+    function handleOpenThemeRewardModal(opening = false) {
+
+        if (opening) {
+            setIsThemeRewardModalOpen(true)
+        } else {
+            setIsThemeRewardModalOpen(!isThemeRewardModalOpen)
+        }
+    }
+
     return (
-        <GameBodyContainer>
-            <ToastContainer />
-            <Head>
-                <title>GameBoard | ColorsCrush</title>
-                <meta name="viewport" content=
-                    "width=device-width, user-scalable=no" />
-            </Head>
-            <StartGameModal
-                isOpen={isStartGameModalOpen}
-                onRequestClose={handleToggleStartGameModal}
-            />
+        <ThemeProvider
+            theme={theme}
+        >
 
-            <ScoreRecordsModal
-                isOpen={isScoreRecordsModalOpen}
-                onRequestClose={handleOpenScoreRecordsModal}
-                historicalScores={historicalScores}
-            />
+            <GameBodyContainer>
+                <ToastContainer />
+                <Head>
+                    <title>GameBoard | ColorsCrush</title>
+                    <meta name="viewport" content=
+                        "width=device-width, user-scalable=no" />
+                </Head>
+                <StartGameModal
+                    isOpen={isStartGameModalOpen}
+                    onRequestClose={handleToggleStartGameModal}
+                />
 
+                <ScoreRecordsModal
+                    isOpen={isScoreRecordsModalOpen}
+                    onRequestClose={handleOpenScoreRecordsModal}
+                    historicalScores={historicalScores}
+                />
 
-            <HomeButton />
+                <ThemeRewardModal
+                    isOpen={isThemeRewardModalOpen}
+                    onRequestClose={handleOpenThemeRewardModal}
+                />
 
-            <ScoreBoard />
-            <GameBoard />
-            <ScoreRecords historical={historicalScores} />
-            <ScoreRecordsModalButton handleOpenScoreRecordsModal={handleOpenScoreRecordsModal} />
-            <Widget />
+                <HomeButton />
 
-            <HowToPlayButton className="howToPlayButton">
-                <HelpIcon />
-            </HowToPlayButton>
-        </GameBodyContainer>
+                <ScoreBoard handleOpenThemeRewardModal={handleOpenThemeRewardModal} />
+                <GameBoard />
+                <ScoreRecords historical={historicalScores} />
+                <ScoreRecordsModalButton handleOpenScoreRecordsModal={handleOpenScoreRecordsModal} />
+                <Widget />
+
+                <HowToPlayButton className="howToPlayButton">
+                    <HelpIcon />
+                </HowToPlayButton>
+            </GameBodyContainer>
+        </ThemeProvider>
     )
 }
 
