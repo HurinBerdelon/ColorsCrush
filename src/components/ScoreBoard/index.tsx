@@ -5,8 +5,14 @@ import { ThemeContext } from 'styled-components'
 import { api } from "../../services/api";
 import { Loading } from "../Feedback/WidgetForm/ScreenshotButton.tsx/Loading";
 import { toastSuccess } from "../../providers/toastProvider";
+import { PlayerSchema } from "../../schema/player";
+import { darkThemeRewardScore, LOCALSTORE_ITEM } from "../../config";
 
-export function ScoreBoard(): JSX.Element {
+interface ScoreBoardProps {
+    handleOpenThemeRewardModal(opening?: boolean): void
+}
+
+export function ScoreBoard({ handleOpenThemeRewardModal }: ScoreBoardProps): JSX.Element {
 
     const { scoreDisplay, game } = useGame()
     const [percent, setPercent] = useState(0)
@@ -17,6 +23,14 @@ export function ScoreBoard(): JSX.Element {
     useEffect(() => {
         setPercent(scoreDisplay - (Math.floor(scoreDisplay / 100)) * 100)
         setMultiplies(Math.floor(scoreDisplay / 100))
+
+        if (scoreDisplay >= darkThemeRewardScore) {
+            const playerSaved: PlayerSchema = JSON.parse(localStorage.getItem(LOCALSTORE_ITEM))
+
+            if (!playerSaved.gamesAvailable.includes('dark')) {
+                handleOpenThemeRewardModal(true)
+            }
+        }
 
     }, [scoreDisplay])
 

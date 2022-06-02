@@ -7,6 +7,10 @@ export const Container = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    padding: 2rem;
+    background: ${props => props.theme.colors.boxColorOne};
+    border-radius: 0.5rem;
     
     .playButton {
         width: 75%;
@@ -14,7 +18,7 @@ export const Container = styled.div`
         text-align: center;
 
         button {
-            background: ${props => props.theme.colors.boxColorOne};
+            background: ${props => props.theme.colors.gray};
             padding: 0 1rem;
             
             border-radius: 0.5rem;
@@ -39,7 +43,7 @@ export const Container = styled.div`
         color: ${props => props.theme.colors.mainText};
 
         &:hover {
-            color: ${props => props.theme.colors.gray};
+            filter: brightness(0.8)
         }
     }
 

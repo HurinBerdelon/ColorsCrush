@@ -19,12 +19,14 @@ export const Container = styled.div`
 
         li {
             display: flex;
-            align-items: center;
             gap: 0.5rem;
         }
     }
 
     color: ${props => props.theme.colors.mainText};
+    background: ${props => props.theme.colors.boxColorOne};
+    padding: 2rem;
+    border-radius: 0.5rem;
 
     h2 {
         margin-bottom: 1rem;

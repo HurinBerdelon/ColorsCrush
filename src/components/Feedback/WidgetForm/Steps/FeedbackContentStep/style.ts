@@ -60,7 +60,7 @@ export const Form = styled.form`
 
 
         &::placeholder {
-            color: ${props => props.theme.colors.secondaryText};
+            color: ${props => props.theme.colors.gray};
         }
     }
 

@@ -1,41 +1,52 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    .face {
+        width: 150px;
+        height: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-        .face {
-            width: 150px;
-            height: 150px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        color: ${props => props.theme.colors.mainText};
+        background: ${props => props.theme.colors.gray};
 
-            color: var(--gray-900);
-            font-family: 'Smooch', cursive;
-            font-size: 6rem;
-            padding: .5rem 2rem 0 0;
-
-            border-radius: 0.5rem;
-            box-shadow: 5px 5px 5px 0.5px #000;
+        font-family: 'Smooch', cursive;
+        font-size: 5rem;
+        
+        border-radius: 0.5rem;
+        box-shadow: 5px 5px 5px 0.5px ${props => props.theme.colors.gray};
             
-            p {
-                font-size: 1.5rem;
-                font-weight: 400;
-            }
+        p {
+            font-size: 1.5rem;
+            font-weight: 400;
         }
+    }
 
-        .front {
-            background-color: var(--blue-100);
-        }   
-
-        .back {
-            img {
-                object-fit: contain;
-                
-            }
+    .interact:hover {
+        &:hover {
+            cursor: pointer;
+            filter: brightness(1.1);
         }
+    }
 
+    @media (max-width: 720px) {
+        .face {
+            width: 75px;
+            height: 75px;
+            font-size: 3rem;
+        }
+    }
 
+    @media (max-width: 360px) {
+        .face {
+            width: 50px;
+            height: 50px;
+            font-size: 2rem;
+        }
+    }
+
+    .front {
+        background-color: ${props => props.theme.colors.secondaryText};
+    }   
 `

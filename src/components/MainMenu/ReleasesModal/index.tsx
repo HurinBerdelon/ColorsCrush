@@ -3,6 +3,7 @@ import Modal from 'react-modal'
 import { Container } from './style'
 import CheckIcon from '@mui/icons-material/Check';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
+import { darkThemeRewardScore } from '../../../config';
 
 interface ReleasesModalProps {
     isReleasesModalOpen: boolean
@@ -48,6 +49,12 @@ export function ReleasesModal({ handleCloseReleasesModal, isReleasesModalOpen }:
                     <li><CheckIcon /> Working on Mobile browsers.</li>
                     <li><CheckIcon /> Reset game feature.</li>
                     <li><CheckIcon /> Save score button.</li>
+
+                    <h4>Version 0.3.1:</h4>
+                    <li><CheckIcon /> Fix bug that was changing player name to anonymous when playing the second time.</li>
+
+                    <h4>Version 0.4.0:</h4>
+                    <li><CheckIcon /> Add a new theme as reward for reaching {darkThemeRewardScore} points.</li>
 
                     <h4>Next Versions:</h4>
                     <li><CheckBoxOutlineBlankIcon /> Other themes as rewards.</li>
