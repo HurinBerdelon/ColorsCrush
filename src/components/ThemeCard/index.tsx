@@ -1,6 +1,7 @@
 import { useState } from "react"
 import ReactCardFlip from "react-card-flip"
-import { LOCALSTORE_ITEM } from "../../config"
+import { LOCALSTORE_KEY } from "../../config"
+import { useGame } from "../../hooks/useGame"
 import { PlayerSchema } from "../../schema/player"
 import { Container } from "./style"
 
@@ -13,6 +14,7 @@ interface ThemeCardProps {
 export function ThemeCard({ themeName, isRewardOpen, handleToggleReward }: ThemeCardProps): JSX.Element {
 
     const [flipClass, setFlipClass] = useState(false)
+    const { setPlayer } = useGame()
 
     function handleFlip() {
         if (isRewardOpen) {
@@ -22,12 +24,15 @@ export function ThemeCard({ themeName, isRewardOpen, handleToggleReward }: Theme
 
             handleToggleReward()
 
-            const player: PlayerSchema = JSON.parse(localStorage.getItem(LOCALSTORE_ITEM))
+            const player: PlayerSchema = JSON.parse(localStorage.getItem(`player_${LOCALSTORE_KEY}`))
 
             if (!player.gamesAvailable.includes(themeName)) {
-                player.gamesAvailable.push(themeName)
+                player.gamesAvailable.push('dark')
+                setPlayer({
+                    ...player,
+                })
             }
-            localStorage.setItem(LOCALSTORE_ITEM, JSON.stringify(player))
+            localStorage.setItem(`player_${LOCALSTORE_KEY}`, JSON.stringify(player))
         }
     }
 

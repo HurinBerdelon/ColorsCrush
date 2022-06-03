@@ -8,9 +8,7 @@ import { Loading } from "../Feedback/WidgetForm/ScreenshotButton.tsx/Loading"
 import { useTheme } from "../../hooks/useTheme"
 import light from "../../styles/theme/light"
 import dark from "../../styles/theme/dark"
-import { LOCALSTORE_ITEM } from "../../config"
-
-// import { ThemeContext } from 'styled-components'
+import { LOCALSTORE_KEY } from "../../config"
 
 export default function MainMenu(): JSX.Element {
 
@@ -20,7 +18,7 @@ export default function MainMenu(): JSX.Element {
 
     useEffect(() => {
         localStorage.removeItem('colors-crush-player')
-        const playerSaved: PlayerSchema = JSON.parse(localStorage.getItem(LOCALSTORE_ITEM))
+        const playerSaved: PlayerSchema = JSON.parse(localStorage.getItem(`player_${LOCALSTORE_KEY}`))
 
         setPlayer(playerSaved)
     }, [])
@@ -31,7 +29,7 @@ export default function MainMenu(): JSX.Element {
 
         setTheme(game === 'light' ? light : dark)
 
-        localStorage.setItem(LOCALSTORE_ITEM, JSON.stringify({
+        localStorage.setItem(`player_${LOCALSTORE_KEY}`, JSON.stringify({
             name: player ? player.name : playerName,
             gamesAvailable: player ? player.gamesAvailable : ['light'],
             currentTheme: game
@@ -51,21 +49,8 @@ export default function MainMenu(): JSX.Element {
         }
     }
 
-    // const { colors } = useContext(ThemeContext)
-
     return (
         <Container>
-            {/* <Switch
-                onChange={() => { }}
-                checked={false}
-                checkedIcon={false}
-                uncheckedIcon={false}
-                height={20}
-                width={40}
-                handleDiameter={20}
-                offColor={shade(0.15, colors.primary)}
-                onColor={colors.secundary}
-            /> */}
 
             <h1>Welcome to Colors Crush<span>Beta</span></h1>
             {player

@@ -8,7 +8,7 @@ export const scoreTableLenght = 10
 
 export const darkThemeRewardScore = 100
 
-export const LOCALSTORE_ITEM = `colors-crush-player_v${project.version}`
+export const LOCALSTORE_KEY = `colors-crush_v${project.version}`
 
 export const squarePiecesTemplate = {
     light: [
@@ -20,20 +20,20 @@ export const squarePiecesTemplate = {
         '/images/light/orange.png',
     ],
     dark: [
-        '/images/light/pink.png',
-        '/images/light/yellow.png',
-        '/images/light/purple.png',
-        '/images/light/blue.png',
-        '/images/light/green.png',
-        '/images/light/orange.png',
+        '/images/dracula/pink.png',
+        '/images/dracula/yellow.png',
+        '/images/dracula/dark-blue.png',
+        '/images/dracula/light-blue.png',
+        '/images/dracula/green.png',
+        '/images/dracula/red.png',
     ],
     dracula: [
-        '/images/light/pink.png',
-        '/images/light/yellow.png',
-        '/images/light/purple.png',
-        '/images/light/blue.png',
-        '/images/light/green.png',
-        '/images/light/orange.png',
+        '/images/dracula/pink.png',
+        '/images/dracula/yellow.png',
+        '/images/dracula/dark-blue.png',
+        '/images/dracula/light-blue.png',
+        '/images/dracula/green.png',
+        '/images/dracula/red.png',
     ],
 
 }

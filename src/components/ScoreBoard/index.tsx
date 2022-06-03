@@ -6,7 +6,7 @@ import { api } from "../../services/api";
 import { Loading } from "../Feedback/WidgetForm/ScreenshotButton.tsx/Loading";
 import { toastSuccess } from "../../providers/toastProvider";
 import { PlayerSchema } from "../../schema/player";
-import { darkThemeRewardScore, LOCALSTORE_ITEM } from "../../config";
+import { darkThemeRewardScore, LOCALSTORE_KEY } from "../../config";
 
 interface ScoreBoardProps {
     handleOpenThemeRewardModal(opening?: boolean): void
@@ -25,7 +25,7 @@ export function ScoreBoard({ handleOpenThemeRewardModal }: ScoreBoardProps): JSX
         setMultiplies(Math.floor(scoreDisplay / 100))
 
         if (scoreDisplay >= darkThemeRewardScore) {
-            const playerSaved: PlayerSchema = JSON.parse(localStorage.getItem(LOCALSTORE_ITEM))
+            const playerSaved: PlayerSchema = JSON.parse(localStorage.getItem(`player_${LOCALSTORE_KEY}`))
 
             if (!playerSaved.gamesAvailable.includes('dark')) {
                 handleOpenThemeRewardModal(true)

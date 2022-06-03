@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import Modal from 'react-modal'
-import { LOCALSTORE_ITEM } from '../../config';
+import { LOCALSTORE_KEY } from '../../config';
 import { useGame } from '../../hooks/useGame';
+import { useTheme } from '../../hooks/useTheme';
+import dark from '../../styles/theme/dark';
 import { Loading } from '../Feedback/WidgetForm/ScreenshotButton.tsx/Loading';
 import { ThemeCard } from '../ThemeCard';
 import { Container } from "./style";
@@ -20,6 +22,7 @@ export function ThemeRewardModal(
     const [isRewardOpen, setIsRewardOpen] = useState(false)
     const [isRestartLoading, setIsRestartLoading] = useState(false)
     const { player, setPlayer } = useGame()
+    const { setTheme } = useTheme()
 
     useEffect(() => {
         Modal.setAppElement(document.getElementById('__next'))
@@ -33,7 +36,7 @@ export function ThemeRewardModal(
 
         setIsRestartLoading(true)
 
-        localStorage.setItem(LOCALSTORE_ITEM, JSON.stringify({
+        localStorage.setItem(`player_${LOCALSTORE_KEY}`, JSON.stringify({
             ...player,
             currentTheme: 'dark'
         }))
@@ -42,6 +45,8 @@ export function ThemeRewardModal(
             ...player,
             currentTheme: 'dark'
         })
+
+        setTheme(dark)
 
         location.reload()
     }

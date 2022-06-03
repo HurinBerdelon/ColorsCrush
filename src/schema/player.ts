@@ -1,5 +1,5 @@
 export interface PlayerSchema {
     name: string
     gamesAvailable: string[]
-    currentTheme
+    currentTheme: string
 }

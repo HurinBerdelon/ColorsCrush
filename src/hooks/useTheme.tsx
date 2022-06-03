@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useContext, useEffect, useState, } from "react";
 import { DefaultTheme } from "styled-components";
-import { LOCALSTORE_ITEM } from "../config";
+import { LOCALSTORE_KEY } from "../config";
 
 import light from '../styles/theme/light'
 import { usePersistedState } from "./usePersistedState";
@@ -19,7 +19,7 @@ export const ThemeContext = createContext<ThemeContextData>(
 )
 
 export function ThemeContextProvider({ children }: ThemeProviderProps) {
-    const [theme, setTheme] = usePersistedState(`theme_${LOCALSTORE_ITEM}`, light)
+    const [theme, setTheme] = usePersistedState(`theme_${LOCALSTORE_KEY}`, light)
 
     const [defaultTheme, setDefaultTheme] = useState(light)
 

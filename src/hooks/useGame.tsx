@@ -1,9 +1,9 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
-import { LOCALSTORE_ITEM, squarePiecesTemplate } from "../config";
 import { GameSchema } from "../schema/game";
 import { PlayerSchema } from "../schema/player";
 import { v4 as uuidv4 } from 'uuid'
 import { useRouter } from "next/router";
+import { LOCALSTORE_KEY, squarePiecesTemplate } from "../config";
 
 const Blank = '/images/blank.png'
 
@@ -64,7 +64,7 @@ export function GameProvider({ children }: GameProviderProps) {
 
     useEffect(() => {
         if (!player) {
-            const playerSaved = JSON.parse(localStorage.getItem(LOCALSTORE_ITEM))
+            const playerSaved = JSON.parse(localStorage.getItem(`player_${LOCALSTORE_KEY}`))
             if (playerSaved) {
                 setPlayer(playerSaved)
             } else {
