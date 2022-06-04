@@ -6,7 +6,7 @@ import light from '../styles/theme/light'
 import { usePersistedState } from "./usePersistedState";
 
 interface ThemeContextData {
-    theme: DefaultTheme
+    theme: typeof light
     setTheme(theme: DefaultTheme): void
 }
 
@@ -21,18 +21,10 @@ export const ThemeContext = createContext<ThemeContextData>(
 export function ThemeContextProvider({ children }: ThemeProviderProps) {
     const [theme, setTheme] = usePersistedState(`theme_${LOCALSTORE_KEY}`, light)
 
-    const [defaultTheme, setDefaultTheme] = useState(light)
-
-    useEffect(() => {
-        if (theme) {
-            setDefaultTheme(theme)
-        }
-    }, [theme])
-
     return (
         <ThemeContext.Provider
             value={{
-                theme: defaultTheme,
+                theme,
                 setTheme
             }}
         >

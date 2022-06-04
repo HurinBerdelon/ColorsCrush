@@ -7,17 +7,14 @@ type ReturnProps<T> = [
 
 export function usePersistedState<T>(key: string, initialState: T): ReturnProps<T> {
 
-    const isServer = typeof window === "undefined"
+    const [state, setState] = useState(initialState)
 
-    const [state, setState] = useState(() => {
-
-        if (!isServer) {
-            const storageValue = localStorage.getItem(key)
-
-            if (storageValue) return JSON.parse(storageValue)
-            else return initialState
+    useEffect(() => {
+        const storageValue = localStorage.getItem(key)
+        if (storageValue) {
+            setState(JSON.parse(storageValue))
         }
-    })
+    }, [])
 
     useEffect(() => {
         localStorage.setItem(key, JSON.stringify(state))

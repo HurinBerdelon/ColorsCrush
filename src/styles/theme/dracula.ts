@@ -1,5 +1,5 @@
 export default {
-    title: 'dark',
+    title: 'dracula',
 
     colors: {
 

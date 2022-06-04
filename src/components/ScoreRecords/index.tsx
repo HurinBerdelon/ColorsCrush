@@ -79,8 +79,7 @@ export function ScoreRecords({ historical }: ScoreRecordsProps): JSX.Element {
             setGame({
                 ...game,
                 playerName: player.name,
-                score: scoreDisplay,
-                theme: player.currentTheme
+                score: scoreDisplay
             })
         }
     }, [scoreDisplay])

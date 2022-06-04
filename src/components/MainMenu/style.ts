@@ -12,6 +12,22 @@ export const Container = styled.div`
 
     color: ${props => props.theme.colors.mainText};
 
+    h3 {
+        display: flex;
+
+        span {
+            padding-left: 1rem;
+            svg {
+                font-size: 1.4rem;
+
+                &:hover {
+                    filter: brightness(0.7);
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
     @media (max-width: 720px) {
         text-align: center;
         height: calc(100vh - 8.8rem);
@@ -29,35 +45,48 @@ export const Container = styled.div`
         }
     }
 
-    input {
-        height: 2rem;
-        font-size: 1.125rem;
-        margin-bottom: 2rem;
-        text-align: center;
-    }
+    .themes {
+            display: flex;
+            justify-content: space-evenly;
+            width: 20rem;
+            margin-bottom: 1rem;
+   
+            .themeSelector {
+                background: ${props => props.theme.colors.gray};
+                color: ${props => props.theme.colors.white};            
+                padding: 0 1rem;
+                font-size: 1.25rem;
+                border-radius: 0.25rem;
 
-    .howToPlayButton {
-        color: ${props => props.theme.colors.mainText};
+                &:hover {
+                    filter: brightness(1.2);
+                }
+
+                &:disabled {
+                    filter: brightness(1);
+                    cursor: default;
+                }
+            }
+
+            .active {
+                background: ${props => props.theme.colors.secondaryText};
+            }
+        }
+
+    .startGame {
+        margin-top: 1rem;
+        background: ${props => props.theme.colors.secondaryText};
+        color: ${props => props.theme.colors.white};
+        width: 10rem;
+        font-size: 1.25rem;
+        border-radius: 0.25rem;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         &:hover {
-            color: ${props => props.theme.colors.gray};
-        }
-    }
-
-    h3 {
-        margin-bottom: 1rem;
-    }
-
-    .listOfGames {
-        display: flex;
-        flex-direction: column;
-        a {
-            font-size: 1.25rem;
-            color: ${props => props.theme.colors.secondaryText};
-
-            &:hover {
-                filter: brightness(0.8);
-            }
+            filter: brightness(1.2);
         }
     }
 `

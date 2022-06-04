@@ -37,13 +37,11 @@ export function ThemeRewardModal(
         setIsRestartLoading(true)
 
         localStorage.setItem(`player_${LOCALSTORE_KEY}`, JSON.stringify({
-            ...player,
-            currentTheme: 'dark'
+            ...player
         }))
 
         setPlayer({
-            ...player,
-            currentTheme: 'dark'
+            ...player
         })
 
         setTheme(dark)

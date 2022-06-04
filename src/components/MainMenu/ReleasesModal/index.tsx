@@ -55,10 +55,10 @@ export function ReleasesModal({ handleCloseReleasesModal, isReleasesModalOpen }:
 
                     <h4>Version 0.4.0:</h4>
                     <li><CheckIcon /> Add a new theme as reward for reaching {darkThemeRewardScore} points.</li>
+                    <li><CheckIcon /> Change name feature.</li>
 
                     <h4>Next Versions:</h4>
                     <li><CheckBoxOutlineBlankIcon /> Other themes as rewards.</li>
-                    <li><CheckBoxOutlineBlankIcon /> Reset name feature.</li>
                     <li><CheckBoxOutlineBlankIcon /> Translation for other languages.</li>
                     <li><CheckBoxOutlineBlankIcon /> New ways to score points.</li>
                     <li><CheckBoxOutlineBlankIcon /> Level hard for hardcore players.</li>

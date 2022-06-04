@@ -39,7 +39,6 @@ export const GlobalStyle = createGlobalStyle`
             #F0A166;
             #F5CB80;
         */
-
     }
 
     * {
