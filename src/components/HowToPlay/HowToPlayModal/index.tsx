@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import Modal from 'react-modal'
+import { db_frequency } from '../../../config'
 import { Container } from './style'
 
 interface HowToPlayModalProps {
@@ -48,7 +49,7 @@ export function HowToPlayModal({ handleCloseHowToPlayModal, isHowToPlayModalOpen
                         Matchs of 5 give 15 points, matchs of 4 give 8 points and matchs of 3 give 3 points.
                     </li>
                     <li>
-                        Your score is saved every 15 seconds, once you reach the top 10 scores.
+                        Your score is saved every {db_frequency} seconds, once you reach the top 10 scores.
                     </li>
                 </ul>
             </Container>

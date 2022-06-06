@@ -7,7 +7,7 @@ export default {
         boxColorOne: '#121212',
         boxColorTwo: '#222222',
         mainText: '#E4E6E7',
-        secondaryText: '#74009F ',
+        secondaryText: '#4A2B61',
 
         gray: '#434548',
         white: '#FFFFFF',

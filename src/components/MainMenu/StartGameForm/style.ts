@@ -23,6 +23,12 @@ export const Container = styled.div`
             &:hover {
                 filter: brightness(1.2);
             }
+
+            &:disabled {
+                filter: brightness(1.0);
+                cursor: default;
+                background: ${props => props.theme.colors.gray};
+            }
         }
     }
     

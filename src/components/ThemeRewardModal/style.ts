@@ -13,6 +13,7 @@ export const Container = styled.div`
 
     h3 {
         color: ${props => props.theme.colors.mainText};
+        text-align: center;
     }
 
     .buttons {

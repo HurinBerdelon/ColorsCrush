@@ -47,9 +47,9 @@ export const Container = styled.div`
 
     .themes {
             display: flex;
-            justify-content: space-evenly;
-            width: 20rem;
-            margin-bottom: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+            gap: 1.9rem;
    
             .themeSelector {
                 background: ${props => props.theme.colors.gray};
@@ -78,6 +78,8 @@ export const Container = styled.div`
         background: ${props => props.theme.colors.secondaryText};
         color: ${props => props.theme.colors.white};
         width: 10rem;
+        height: 1.8125rem; // =29px
+
         font-size: 1.25rem;
         border-radius: 0.25rem;
 

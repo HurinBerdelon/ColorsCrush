@@ -11,8 +11,7 @@ export const Container = styled.div`
         color: ${props => props.theme.colors.mainText};
         background: ${props => props.theme.colors.gray};
 
-        font-family: 'Smooch', cursive;
-        font-size: 5rem;
+        font-size: 3.5rem;
         
         border-radius: 0.5rem;
         box-shadow: 5px 5px 5px 0.5px ${props => props.theme.colors.gray};
@@ -34,7 +33,7 @@ export const Container = styled.div`
         .face {
             width: 75px;
             height: 75px;
-            font-size: 3rem;
+            font-size: 2.2rem;
         }
     }
 
@@ -42,7 +41,7 @@ export const Container = styled.div`
         .face {
             width: 50px;
             height: 50px;
-            font-size: 2rem;
+            font-size: 1.8rem;
         }
     }
 

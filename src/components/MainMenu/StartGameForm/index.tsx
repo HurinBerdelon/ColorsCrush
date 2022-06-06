@@ -67,6 +67,7 @@ export function StartGameForm(): JSX.Element {
                         <button
                             className="submitForm"
                             type='submit'
+                            disabled={errors.name ? true : false}
                         >
                             {isGameLoading ? <Loading /> : 'Start'}
                         </button>

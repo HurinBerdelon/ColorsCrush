@@ -41,7 +41,6 @@ export default function MainMenu(): JSX.Element {
             setIsChangingName(false)
         }
 
-        console.log(isGameLoading || currentTheme.title === 'light')
     }, [])
 
     function handleStartGame() {
@@ -109,44 +108,6 @@ export default function MainMenu(): JSX.Element {
                 )
                 : <StartGameForm />
             }
-
-            {/* <h3>Will change from here</h3>
-            {player
-                ? <h3>Hello, {player.name}</h3>
-                : <input
-                    type='text'
-                    onChange={(event) => setPlayerName(event.target.value)}
-                    placeholder='Your Name'
-                />}
-
-            
-            <ul className="listOfGames">
-                {isGameLoading ? <Loading />
-                    :
-                    (player
-                        ? player.gamesAvailable.map(game =>
-                        (<Link
-                            key={game}
-                            href='/gameboard'
-                        >
-                            <a
-
-                                onClick={() => handleChoosenGame(game)}
-                            >
-                                {game.toUpperCase()}
-                            </a>
-                        </Link>)
-                        )
-                        : <Link
-                            href='/gameboard'
-                        >
-                            <a
-                                onClick={() => handleChoosenGame('light')}
-                            >
-                                LIGHT
-                            </a>
-                        </Link>)}
-            </ul> */}
 
         </Container>
     )

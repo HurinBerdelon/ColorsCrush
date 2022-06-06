@@ -57,7 +57,7 @@ export function ThemeRewardModal(
         >
 
             <Container>
-                <h3>Congratulations, you got a reward!</h3>
+                <h3>Congratulations, you got a new theme as reward!</h3>
                 <div className='themeCardBox'>
                     <ThemeCard
                         handleToggleReward={handleToggleReward}
