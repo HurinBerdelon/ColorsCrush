@@ -64,7 +64,7 @@ export function StartGameForm(): JSX.Element {
                             type='text'
                             name='name'
                             className={errors.name ? 'errorMessage' : ''}
-                            placeholder={errors.name ? errors.name : (player ? player.name : "Your Name")}
+                            placeholder={errors.name ? errors.name : (player ? player.name : t('home:your-name'))}
                         />
 
                         <button
