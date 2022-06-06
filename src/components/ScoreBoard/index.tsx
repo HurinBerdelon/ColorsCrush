@@ -7,6 +7,7 @@ import { Loading } from "../Feedback/WidgetForm/ScreenshotButton.tsx/Loading";
 import { toastSuccess } from "../../providers/toastProvider";
 import { PlayerSchema } from "../../schema/player";
 import { darkThemeRewardScore, LOCALSTORE_KEY } from "../../config";
+import { useTranslation } from "next-i18next";
 
 interface ScoreBoardProps {
     handleOpenThemeRewardModal(opening?: boolean): void
@@ -19,6 +20,8 @@ export function ScoreBoard({ handleOpenThemeRewardModal }: ScoreBoardProps): JSX
     const [multiplies, setMultiplies] = useState(0)
     const [isRestartLoading, setIsRestartLoading] = useState(false)
     const [isSaveLoading, setIsSaveLoading] = useState(false)
+
+    const { t } = useTranslation()
 
     useEffect(() => {
         setPercent(scoreDisplay - (Math.floor(scoreDisplay / 100)) * 100)
@@ -57,7 +60,7 @@ export function ScoreBoard({ handleOpenThemeRewardModal }: ScoreBoardProps): JSX
             barColorEnd={colors.scoreBar[multiplies % 7]?.end}
         >
             <div className="scores">
-                <h2>Score: {scoreDisplay}</h2>
+                <h2>{t('gameboard:score')}: {scoreDisplay}</h2>
                 <div className="scoreBox">
                     <div className="scoreBar"></div>
                 </div>
@@ -69,14 +72,14 @@ export function ScoreBoard({ handleOpenThemeRewardModal }: ScoreBoardProps): JSX
                         onClick={handleSaveScore}
                         disabled={isSaveLoading}
                     >
-                        {isSaveLoading ? <Loading /> : 'Save Score'}
+                        {isSaveLoading ? <Loading /> : t('gameboard:save-score')}
                     </button>
                     <button
                         type="button"
                         onClick={handleReloadPage}
                         disabled={isRestartLoading}
                     >
-                        {isRestartLoading ? <Loading /> : 'Restart'}
+                        {isRestartLoading ? <Loading /> : t('gameboard:restart-game')}
                     </button>
                 </div>
             </div>

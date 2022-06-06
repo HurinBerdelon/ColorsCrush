@@ -43,6 +43,42 @@ export const Container = styled.div`
             padding-left: 1rem;
             color: ${props => props.theme.colors.secondaryText};
         }
+
+        @media (max-width: 720px) {
+            font-size: 3.25rem;
+        }
+    }
+
+
+
+    .languages {
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 1.8rem;
+
+        .languageSelector {
+            font-size: 2rem;
+            padding: 0 1rem;
+            border: 2px solid transparent;
+            border-radius: 0.25rem;
+            opacity: 0.4;
+
+            &:hover {
+                opacity: 1;
+            }
+
+            &:disabled {
+                opacity: 1;
+                cursor: default;
+                color: inherit;
+            }
+        }
+
+        .active {
+            border: 2px solid ${props => props.theme.colors.secondaryText};
+            opacity: 1;
+        }
     }
 
     .themes {

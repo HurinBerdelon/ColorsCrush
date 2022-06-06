@@ -1,3 +1,5 @@
+import { GetStaticProps } from "next"
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Head from "next/head"
 import { useEffect } from "react"
 import { ThemeProvider } from "styled-components"
@@ -5,11 +7,13 @@ import { Footer } from "../components/Footer"
 import MainMenu from "../components/MainMenu"
 import { useGame } from "../hooks/useGame"
 import { useTheme } from "../hooks/useTheme"
-import light from "../styles/theme/light"
+
+import { useTranslation } from 'next-i18next'
 
 export default function Home(): JSX.Element {
 
     const { setIsPlaying } = useGame()
+    const { t } = useTranslation()
     const { theme } = useTheme()
 
     useEffect(() => {
@@ -28,4 +32,13 @@ export default function Home(): JSX.Element {
             <Footer />
         </ThemeProvider>
     )
+}
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, ['home']))
+        }
+    }
 }

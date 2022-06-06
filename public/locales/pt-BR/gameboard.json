@@ -1,0 +1,19 @@
+{
+    "click-to-play": "Jogar",
+    "click-here-for-instructions": "Instruções",
+    "score": "Pontuação",
+    "save-score": "Salvar",
+    "restart-game": "Reiniciar",
+    "player": "JOGADOR",
+    "show-ranking": "Mostrar Ranking",
+    "congratulations-you-got-new-theme": "Parabéns, você ganhou um novo tema como recompensa!",
+    "continue-this-game": "Continuar neste jogo",
+    "start-again-with-new-theme": "Começar novamente com novo tema",
+    "how-to-play": "Como Jogar:",
+    "move-the-circles-to-make-rows": "Mova os círculos para formar linhas ou colunas de 3, 4 ou 5 da mesma cor para marcar pontos.",
+    "circles-can-be-moved": "Círculos podem ser movidos uma casa para direita, esquerda, cima ou baixo.",
+    "on-moving-a-circle-it": "Ao mover os círculos, eles trocarão de lugares se uma linha ou coluna com 3, 4 ou 5 da mesma cor for atingida.",
+    "everytime-a-match-is-reached": "Toda vez que uma linha ou coluna com 3, 4 ou 5 for atingida, os círculos serão removidos somando pontos e o tabuleiro irá se autocompletar.",
+    "matchs-of-x-give-y-points": "Linhas ou colunas de 5 marcam 15 pontos, de 4 marcam 8 pontos, de 3 marcam 3 pontos.",
+    "your-score-is-saved-every": "A pontuação é salva a cada {{db_frequency}} segundos."
+}

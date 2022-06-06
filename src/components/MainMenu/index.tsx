@@ -12,6 +12,9 @@ import light from "../../styles/theme/light"
 import dark from "../../styles/theme/dark"
 import { LOCALSTORE_KEY } from "../../config"
 import { StartGameForm } from "./StartGameForm"
+import { useTranslation } from "next-i18next";
+import i18next from '../../../next-i18next.config'
+import { useRouter } from "next/router";
 
 const THEMES = {
     dark,
@@ -19,6 +22,9 @@ const THEMES = {
 }
 
 export default function MainMenu(): JSX.Element {
+
+    const router = useRouter()
+    const { t } = useTranslation()
 
     const { player, setPlayer, isGameLoading, setIsGameLoading, setGame, setScoreDisplay } = useGame()
     const [isChangingName, setIsChangingName] = useState(true)
@@ -60,9 +66,35 @@ export default function MainMenu(): JSX.Element {
 
     return (
         <Container>
-            <h1>Welcome to Colors Crush<span>Beta</span></h1>
+            <h1>{t('home:welcome')}<span>Beta</span></h1>
 
-            <h3>CHOOSE YOUR THEME</h3>
+            <h3>{t('home:choose-language')}</h3>
+            <div className="languages">
+                <Link
+                    href='/'
+                    locale={'en'}
+                >
+                    <button
+                        className={`languageSelector ${router.locale === 'en' ? 'active' : ''}`}
+                        disabled={router.locale === 'en' ? true : false}
+                    >
+                        🇬🇧
+                    </button>
+                </Link>
+                <Link
+                    href='/'
+                    locale={'pt-BR'}
+                >
+                    <button
+                        className={`languageSelector ${router.locale === 'pt-BR' ? 'active' : ''}`}
+                        disabled={router.locale === 'pt-BR' ? true : false}
+                    >
+                        🇧🇷
+                    </button>
+                </Link>
+            </div>
+
+            <h3>{t('home:choose-theme')}</h3>
             <div className="themes">
                 {player
                     ? player.gamesAvailable.map(theme => (
@@ -88,7 +120,7 @@ export default function MainMenu(): JSX.Element {
                 ? (
                     <>
                         <h3>
-                            Hello, {player.name}
+                            {t('home:hello')}, {player.name}
                             <span
                                 onClick={() => setIsChangingName(true)}
                             >
@@ -101,7 +133,7 @@ export default function MainMenu(): JSX.Element {
                                 className="startGame"
                                 onClick={handleStartGame}
                             >
-                                {isGameLoading ? <Loading /> : 'Start'}
+                                {isGameLoading ? <Loading /> : t('home:start')}
                             </a>
                         </Link>
                     </>

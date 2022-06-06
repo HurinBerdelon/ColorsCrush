@@ -1,3 +1,4 @@
+import { useTranslation } from "next-i18next"
 import { CloseButton } from "../../../CloseButton"
 import { Container } from "./style"
 
@@ -6,6 +7,8 @@ interface FeedbackSuccessStepProps {
 }
 
 export function FeedbackSuccessStep({ onFeedbackRestart }: FeedbackSuccessStepProps): JSX.Element {
+
+    const { t } = useTranslation()
 
     return (
         <>
@@ -20,13 +23,13 @@ export function FeedbackSuccessStep({ onFeedbackRestart }: FeedbackSuccessStepPr
                 </svg>
 
                 <span className="text-xl mt-2 dark:text-zinc-100">
-                    Thank you for your feedback!
+                    {t('feedback:thank-you-for-your-feedback')}
                 </span>
 
                 <button
                     onClick={onFeedbackRestart}
                 >
-                    Send another
+                    {t('feedback:send-another')}
                 </button>
 
             </Container>

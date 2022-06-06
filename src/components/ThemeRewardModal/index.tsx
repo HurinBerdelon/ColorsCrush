@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next';
 import { useEffect, useState } from 'react';
 import Modal from 'react-modal'
 import { LOCALSTORE_KEY } from '../../config';
@@ -23,6 +24,8 @@ export function ThemeRewardModal(
     const [isRestartLoading, setIsRestartLoading] = useState(false)
     const { player, setPlayer } = useGame()
     const { setTheme } = useTheme()
+
+    const { t } = useTranslation()
 
     useEffect(() => {
         Modal.setAppElement(document.getElementById('__next'))
@@ -70,13 +73,13 @@ export function ThemeRewardModal(
                         <button
                             onClick={() => onRequestClose()}
                         >
-                            Continue this game
+                            {t('gameboard:continue-this-game')}
                         </button>
                         <button
                             onClick={handleChangeGameTheme}
                             disabled={isRestartLoading}
                         >
-                            {isRestartLoading ? <Loading /> : 'Start again with new theme'}
+                            {isRestartLoading ? <Loading /> : t('gameboard:start-again-with-new-theme')}
 
                         </button>
                     </div>

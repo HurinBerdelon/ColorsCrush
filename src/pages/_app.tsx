@@ -1,9 +1,10 @@
 import { AppProps } from "next/app";
+import { appWithTranslation } from 'next-i18next'
 import { GameProvider } from "../hooks/useGame";
 import { GlobalStyle } from "../styles/GlobalStyle";
 import { ThemeContextProvider } from "../hooks/useTheme";
 
-export default function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps) {
 
     return (
         <ThemeContextProvider>
@@ -15,3 +16,5 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         </ThemeContextProvider>
     )
 }
+
+export default appWithTranslation(MyApp)

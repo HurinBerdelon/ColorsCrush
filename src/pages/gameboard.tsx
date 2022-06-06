@@ -17,6 +17,7 @@ import { ToastContainer } from "react-toastify";
 import { ThemeRewardModal } from "../components/ThemeRewardModal";
 import { useTheme } from "../hooks/useTheme";
 import { ThemeProvider } from "styled-components";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 interface GamePageProps {
     historicalScores: TableGameSchema[]
@@ -82,7 +83,7 @@ export default function GamePage({ historicalScores }: GamePageProps): JSX.Eleme
                 <ScoreRecordsModalButton handleOpenScoreRecordsModal={handleOpenScoreRecordsModal} />
                 <Widget />
 
-                <HowToPlayButton className="howToPlayButton">
+                <HowToPlayButton>
                     <HelpIcon />
                 </HowToPlayButton>
             </GameBodyContainer>
@@ -90,7 +91,7 @@ export default function GamePage({ historicalScores }: GamePageProps): JSX.Eleme
     )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
 
     const response = await api.get(`${process.env.HOME_PAGE_URL}/api/prisma_api`)
 
@@ -106,7 +107,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
     return {
         props: {
-            historicalScores
+            historicalScores,
+            ...(await serverSideTranslations(locale, ['gameboard', 'feedback']))
         }
     }
 }

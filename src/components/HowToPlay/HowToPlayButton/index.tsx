@@ -3,10 +3,9 @@ import { HowToPlayModal } from "../HowToPlayModal";
 
 interface HowToPlayButtonProps {
     children: ReactElement
-    className: string
 }
 
-export function HowToPlayButton({ children, className }: HowToPlayButtonProps): JSX.Element {
+export function HowToPlayButton({ children }: HowToPlayButtonProps): JSX.Element {
 
     const [isHowToPlayModalOpen, setIsHowToPlayModalOpen] = useState(false)
 

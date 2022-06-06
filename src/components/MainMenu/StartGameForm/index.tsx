@@ -5,11 +5,14 @@ import { useGame } from "../../../hooks/useGame";
 import { Container } from "./style";
 import { Loading } from "../../Feedback/WidgetForm/ScreenshotButton.tsx/Loading";
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 
 export function StartGameForm(): JSX.Element {
 
     const { player, setPlayer, isGameLoading, setIsGameLoading } = useGame()
     const router = useRouter()
+
+    const { t } = useTranslation()
 
     const initialValues = {
         name: ''
@@ -45,7 +48,7 @@ export function StartGameForm(): JSX.Element {
     }
 
     const nameSchema = yup.object().shape({
-        name: yup.string().required('Name is Required')
+        name: yup.string().required(t('home:name-required'))
     })
 
     return (
@@ -69,7 +72,7 @@ export function StartGameForm(): JSX.Element {
                             type='submit'
                             disabled={errors.name ? true : false}
                         >
-                            {isGameLoading ? <Loading /> : 'Start'}
+                            {isGameLoading ? <Loading /> : t('home:start')}
                         </button>
                     </Form>
                 )}
