@@ -19,6 +19,37 @@ declare module 'style-components' {
             scoreBarTwo: string,
 
             currentPlayer: string,
+
+            scoreBar: {
+                0: {
+                    begin: string,
+                    end: string,
+                },
+                1: {
+                    begin: string,
+                    end: string,
+                },
+                2: {
+                    begin: string,
+                    end: string,
+                },
+                3: {
+                    begin: string,
+                    end: string,
+                },
+                4: {
+                    begin: string,
+                    end: string,
+                },
+                5: {
+                    begin: string,
+                    end: string,
+                },
+                6: {
+                    begin: string,
+                    end: string,
+                },
+            }
         }
     }
 }

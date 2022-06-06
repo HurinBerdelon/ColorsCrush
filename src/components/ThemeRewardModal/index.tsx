@@ -1,25 +1,91 @@
+import { useTranslation } from 'next-i18next';
+import { useEffect, useState } from 'react';
 import Modal from 'react-modal'
+import { LOCALSTORE_KEY } from '../../config';
+import { useGame } from '../../hooks/useGame';
+import { useTheme } from '../../hooks/useTheme';
+import dark from '../../styles/theme/dark';
+import { Loading } from '../Feedback/WidgetForm/ScreenshotButton.tsx/Loading';
+import { ThemeCard } from '../ThemeCard';
 import { Container } from "./style";
 
 interface ThemeRewardModalProps {
-    isThemeRewardModalOpen: boolean
-    handleCloseThemeRewardModal(): void
+    isOpen: boolean
+    onRequestClose(): void
 }
 
-export function ThemeRewardModal({
-    handleCloseThemeRewardModal,
-    isThemeRewardModalOpen
-}: ThemeRewardModalProps): JSX.Element {
+export function ThemeRewardModal(
+    {
+        onRequestClose,
+        isOpen
+    }: ThemeRewardModalProps): JSX.Element {
 
+    const [isRewardOpen, setIsRewardOpen] = useState(false)
+    const [isRestartLoading, setIsRestartLoading] = useState(false)
+    const { player, setPlayer } = useGame()
+    const { setTheme } = useTheme()
 
+    const { t } = useTranslation()
+
+    useEffect(() => {
+        Modal.setAppElement(document.getElementById('__next'))
+    }, [])
+
+    function handleToggleReward() {
+        setIsRewardOpen(true)
+    }
+
+    function handleChangeGameTheme() {
+
+        setIsRestartLoading(true)
+
+        localStorage.setItem(`player_${LOCALSTORE_KEY}`, JSON.stringify({
+            ...player
+        }))
+
+        setPlayer({
+            ...player
+        })
+
+        setTheme(dark)
+
+        location.reload()
+    }
 
     return (
         <Modal
-            isOpen={isThemeRewardModalOpen}
+            isOpen={isOpen}
             overlayClassName='react-modal-overlay'
             className='react-modal-content_themeReward'
         >
+
             <Container>
+                <h3>Congratulations, you got a new theme as reward!</h3>
+                <div className='themeCardBox'>
+                    <ThemeCard
+                        handleToggleReward={handleToggleReward}
+                        isRewardOpen={isRewardOpen}
+                        themeName='dark'
+                    />
+                </div>
+                {isRewardOpen && (
+                    <div className="buttons">
+                        <button
+                            onClick={() => onRequestClose()}
+                        >
+                            {t('gameboard:continue-this-game')}
+                        </button>
+                        <button
+                            onClick={handleChangeGameTheme}
+                            disabled={isRestartLoading}
+                        >
+                            {isRestartLoading ? <Loading /> : t('gameboard:start-again-with-new-theme')}
+
+                        </button>
+                    </div>
+                )
+                }
+
 
             </Container>
         </Modal>

@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useGame } from "./useGame";
 
 type ReturnProps<T> = [
     T,
@@ -7,12 +8,15 @@ type ReturnProps<T> = [
 
 export function usePersistedState<T>(key: string, initialState: T): ReturnProps<T> {
 
-    const [state, setState] = useState(() => {
+    const [state, setState] = useState(initialState)
+
+    useEffect(() => {
         const storageValue = localStorage.getItem(key)
 
-        if (storageValue) return JSON.parse(storageValue)
-        else return initialState
-    })
+        if (storageValue) {
+            setState(JSON.parse(storageValue))
+        }
+    }, [])
 
     useEffect(() => {
         localStorage.setItem(key, JSON.stringify(state))

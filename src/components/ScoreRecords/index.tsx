@@ -6,6 +6,7 @@ import { useGame } from "../../hooks/useGame";
 import { GameSchema } from "../../schema/game";
 import { api } from "../../services/api";
 import { db_frequency } from "../../config";
+import { useTranslation } from "next-i18next";
 
 export interface TableGameSchema extends GameSchema {
     currentGame: boolean
@@ -20,6 +21,8 @@ export function ScoreRecords({ historical }: ScoreRecordsProps): JSX.Element {
     const { player, scoreDisplay, game, setGame } = useGame()
     const [historicalScores, setHistoricalScores] = useState<TableGameSchema[]>(historical)
     const [timestamp, setTimestamp] = useState(dayjs().unix())
+
+    const { t } = useTranslation()
 
     function updateHistoricalScores(currentGame: GameSchema) {
 
@@ -79,8 +82,7 @@ export function ScoreRecords({ historical }: ScoreRecordsProps): JSX.Element {
             setGame({
                 ...game,
                 playerName: player.name,
-                score: scoreDisplay,
-                theme: player.currentTheme
+                score: scoreDisplay
             })
         }
     }, [scoreDisplay])
@@ -105,8 +107,8 @@ export function ScoreRecords({ historical }: ScoreRecordsProps): JSX.Element {
                 <div className="table">
                     <div className="title">
                         <p></p>
-                        <p className="name">PLAYER</p>
-                        <p className="score">SCORE</p>
+                        <p className="name">{t('gameboard:player')}</p>
+                        <p className="score">{t('gameboard:score').toUpperCase()}</p>
                     </div>
                     {historicalScores
                         ? historicalScores.map((score, index) => (

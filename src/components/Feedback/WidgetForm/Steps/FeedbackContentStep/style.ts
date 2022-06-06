@@ -42,6 +42,7 @@ export const Form = styled.form`
     textarea {
         min-width: 304px;
         width: 100%;
+        resize: none;
 
         min-height: 112px;
 
@@ -60,7 +61,7 @@ export const Form = styled.form`
 
 
         &::placeholder {
-            color: ${props => props.theme.colors.secondaryText};
+            color: ${props => props.theme.colors.gray};
         }
     }
 

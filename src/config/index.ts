@@ -1,8 +1,12 @@
 export const boardWidth = 8
 
-export const db_frequency = 15
+export const db_frequency = 20
 
 export const scoreTableLenght = 10
+
+export const darkThemeRewardScore = 20
+
+export const LOCALSTORE_KEY = `colors-crush_beta`
 
 export const squarePiecesTemplate = {
     light: [
@@ -14,12 +18,20 @@ export const squarePiecesTemplate = {
         '/images/light/orange.png',
     ],
     dark: [
-        '/images/dark/purple.png',
-        '/images/dark/yellow.png',
-        '/images/dark/red.png',
+        '/images/dark/dark-blue.png',
         '/images/dark/blue.png',
-        '/images/dark/green.png',
-        '/images/dark/orange.png',
+        '/images/dark/pink.png',
+        '/images/dark/vibrant-purple.png',
+        '/images/dark/purple.png',
+        '/images/dark/red.png',
+    ],
+    dracula: [
+        '/images/dracula/pink.png',
+        '/images/dracula/yellow.png',
+        '/images/dracula/dark-blue.png',
+        '/images/dracula/light-blue.png',
+        '/images/dracula/green.png',
+        '/images/dracula/red.png',
     ],
 
 }

@@ -39,7 +39,6 @@ export const GlobalStyle = createGlobalStyle`
             #F0A166;
             #F5CB80;
         */
-
     }
 
     * {
@@ -95,8 +94,8 @@ export const GlobalStyle = createGlobalStyle`
         width: 100%;
         max-width: 800px;
 
-        background: var(--gray-50);
-        padding: 2rem;
+        /* background: var(--gray-50); */
+        /* padding: 2rem; */
         position: relative;
         border-radius: 0.5rem;
     }
@@ -105,8 +104,8 @@ export const GlobalStyle = createGlobalStyle`
         width: 100%;
         max-width: 400px;
 
-        background: var(--gray-50);
-        padding: 2rem;
+        /* background: var(--gray-50); */
+        /* padding: 2rem; */
         position: relative;
         border-radius: 0.5rem;
     }

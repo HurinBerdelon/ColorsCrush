@@ -3,13 +3,13 @@ export default {
 
     colors: {
 
-        background: '#000000',
-        boxColorOne: '#AEFFD8',
-        boxColorTwo: '#8FDC97',
-        mainText: '#232320',
-        secondaryText: '#9F4A54',
+        background: '#0C0C0C',
+        boxColorOne: '#121212',
+        boxColorTwo: '#222222',
+        mainText: '#E4E6E7',
+        secondaryText: '#4A2B61',
 
-        gray: '#AAAAAA',
+        gray: '#434548',
         white: '#FFFFFF',
         black: '#000000',
 

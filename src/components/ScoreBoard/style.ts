@@ -73,9 +73,11 @@ export const Container = styled.div<ContainerProps>`
                 background: ${props => props.theme.colors.secondaryText};
                 color: ${props => props.theme.colors.white};
                 width: 42%;
+                height: 1.5rem;
 
                 display: flex;
                 justify-content: center;
+                align-items: center;
                 
                 padding: 0.25rem 0.5rem;
                 border-radius: 0.25rem;
@@ -132,7 +134,7 @@ export const Container = styled.div<ContainerProps>`
                 height: 2.5rem;
                 width: 80%;
                 border: 0.75rem solid ${props => props.theme.colors.gray};
-                border-radius: 0.5rem 0.5rem 0.5rem 0.5rem ;
+                border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
                 display: flex;
                 align-items: center;
                 justify-content: flex-end;

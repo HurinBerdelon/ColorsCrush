@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next'
 import { useEffect } from 'react'
 import Modal from 'react-modal'
 import { useGame } from '../../hooks/useGame'
@@ -12,6 +13,7 @@ interface StartGameModalProps {
 export function StartGameModal({ isOpen, onRequestClose }: StartGameModalProps): JSX.Element {
 
     const { setIsPlaying } = useGame()
+    const { t } = useTranslation()
 
     useEffect(() => {
         Modal.setAppElement(document.getElementById('__next'))
@@ -33,12 +35,12 @@ export function StartGameModal({ isOpen, onRequestClose }: StartGameModalProps):
                             onRequestClose()
                         }}
                     >
-                        Click to Play
+                        {t('gameboard:click-to-play')}
                     </button>
                 </div>
 
-                <HowToPlayButton className='howToPlayButton'>
-                    <h4>Click Here for Instructions</h4>
+                <HowToPlayButton>
+                    <h4>{t('gameboard:click-here-for-instructions')}</h4>
                 </HowToPlayButton>
             </Container>
 

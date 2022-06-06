@@ -12,6 +12,22 @@ export const Container = styled.div`
 
     color: ${props => props.theme.colors.mainText};
 
+    h3 {
+        display: flex;
+
+        span {
+            padding-left: 1rem;
+            svg {
+                font-size: 1.4rem;
+
+                &:hover {
+                    filter: brightness(0.7);
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
     @media (max-width: 720px) {
         text-align: center;
         height: calc(100vh - 8.8rem);
@@ -27,37 +43,88 @@ export const Container = styled.div`
             padding-left: 1rem;
             color: ${props => props.theme.colors.secondaryText};
         }
-    }
 
-    input {
-        height: 2rem;
-        font-size: 1.125rem;
-        margin-bottom: 2rem;
-        text-align: center;
-    }
-
-    .howToPlayButton {
-        color: ${props => props.theme.colors.mainText};
-
-        &:hover {
-            color: ${props => props.theme.colors.gray};
+        @media (max-width: 720px) {
+            font-size: 3.25rem;
         }
     }
 
-    h3 {
-        margin-bottom: 1rem;
-    }
 
-    .listOfGames {
+
+    .languages {
+        margin-bottom: 2rem;
         display: flex;
-        flex-direction: column;
-        a {
-            font-size: 1.25rem;
-            color: ${props => props.theme.colors.secondaryText};
+        align-items: center;
+        gap: 1.8rem;
+
+        .languageSelector {
+            font-size: 2rem;
+            padding: 0 1rem;
+            border: 2px solid transparent;
+            border-radius: 0.25rem;
+            opacity: 0.4;
 
             &:hover {
-                filter: brightness(0.8);
+                opacity: 1;
             }
+
+            &:disabled {
+                opacity: 1;
+                cursor: default;
+                color: inherit;
+            }
+        }
+
+        .active {
+            border: 2px solid ${props => props.theme.colors.secondaryText};
+            opacity: 1;
+        }
+    }
+
+    .themes {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            gap: 1.9rem;
+   
+            .themeSelector {
+                background: ${props => props.theme.colors.gray};
+                color: ${props => props.theme.colors.white};            
+                padding: 0 1rem;
+                font-size: 1.25rem;
+                border-radius: 0.25rem;
+
+                &:hover {
+                    filter: brightness(1.2);
+                }
+
+                &:disabled {
+                    filter: brightness(1);
+                    cursor: default;
+                }
+            }
+
+            .active {
+                background: ${props => props.theme.colors.secondaryText};
+            }
+        }
+
+    .startGame {
+        margin-top: 1rem;
+        background: ${props => props.theme.colors.secondaryText};
+        color: ${props => props.theme.colors.white};
+        width: 10rem;
+        height: 1.8125rem; // =29px
+
+        font-size: 1.25rem;
+        border-radius: 0.25rem;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+            filter: brightness(1.2);
         }
     }
 `

@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    background: ${props => props.theme.colors.white};
+    background: ${props => props.theme.colors.background};
+    color: ${props => props.theme.colors.mainText};
     padding: 1rem;
     position: relative;
     border: 2px solid ${props => props.theme.colors.secondaryText};

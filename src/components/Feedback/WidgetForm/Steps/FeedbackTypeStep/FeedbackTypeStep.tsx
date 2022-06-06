@@ -1,3 +1,4 @@
+import { useTranslation } from "next-i18next"
 import { FeedbackType, feedbackTypes } from "../.."
 import { CloseButton } from "../../../CloseButton"
 import { Container } from "./style"
@@ -9,10 +10,12 @@ interface FeedbackTypeStepProps {
 
 export function FeedbackTypeStep({ onFeedbackTypeChanged }: FeedbackTypeStepProps): JSX.Element {
 
+    const { t } = useTranslation()
+
     return (
         <Container>
             <header>
-                <span>Leave your feedback</span>
+                <span>{t('feedback:leave-your-feedback')}</span>
                 <CloseButton />
             </header>
 
@@ -24,8 +27,8 @@ export function FeedbackTypeStep({ onFeedbackTypeChanged }: FeedbackTypeStepProp
                         type='button'
                         className="selectButton"
                     >
-                        <img src={value.image.source} alt={value.image.alt} />
-                        <span>{value.title}</span>
+                        <img src={value.image.source} alt={t(`feedback:${value.image.alt}`)} />
+                        <span>{t(`feedback:${value.title}`)}</span>
                     </button>
                 ))}
             </div>

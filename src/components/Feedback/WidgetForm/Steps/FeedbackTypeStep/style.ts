@@ -19,6 +19,7 @@ export const Container = styled.div`
 
         .selectButton {
             background: ${props => props.theme.colors.boxColorTwo};
+            color: ${props => props.theme.colors.mainText};
             border-radius: 0.5rem;
             padding: 1.25rem 0;
             width: 2rem;

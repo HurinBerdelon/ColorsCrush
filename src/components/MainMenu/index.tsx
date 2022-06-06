@@ -1,100 +1,145 @@
 import { useEffect, useState } from "react"
+import Link from "next/link"
+import { v4 as uuidv4 } from 'uuid'
+import EditIcon from '@mui/icons-material/Edit';
 import { Container } from "./style"
 import { useGame } from "../../hooks/useGame"
 import { PlayerSchema } from "../../schema/player"
-import Link from "next/link"
 import { Loading } from "../Feedback/WidgetForm/ScreenshotButton.tsx/Loading"
 
-import project from '../../../package.json'
+import { useTheme } from "../../hooks/useTheme"
+import light from "../../styles/theme/light"
+import dark from "../../styles/theme/dark"
+import { LOCALSTORE_KEY } from "../../config"
+import { StartGameForm } from "./StartGameForm"
+import { useTranslation } from "next-i18next";
+import i18next from '../../../next-i18next.config'
+import { useRouter } from "next/router";
 
-// import { ThemeContext } from 'styled-components'
-
-export const LOCALSTORE_ITEM = `colors-crush-player_v${project.version}`
+const THEMES = {
+    dark,
+    light,
+}
 
 export default function MainMenu(): JSX.Element {
 
-    const { player, setPlayer, isGameLoading, setIsGameLoading } = useGame()
-    const [playerName, setPlayerName] = useState('anonymous')
+    const router = useRouter()
+    const { t } = useTranslation()
+
+    const { player, setPlayer, isGameLoading, setIsGameLoading, setGame, setScoreDisplay } = useGame()
+    const [isChangingName, setIsChangingName] = useState(true)
+    const { theme: currentTheme, setTheme } = useTheme()
 
     useEffect(() => {
-        localStorage.removeItem('colors-crush-player')
-        const playerSaved: PlayerSchema = JSON.parse(localStorage.getItem(LOCALSTORE_ITEM))
+        setGame({
+            id: uuidv4(),
+            playerName: '',
+            score: 0,
+            theme: ''
+        })
+        setScoreDisplay(0)
 
-        setPlayer(playerSaved)
+        localStorage.removeItem('colors-crush-player')
+        const playerSaved: PlayerSchema = JSON.parse(localStorage.getItem(`player_${LOCALSTORE_KEY}`))
+
+        if (playerSaved) {
+            setPlayer(playerSaved)
+            setIsChangingName(false)
+        }
+
     }, [])
 
-    function handleChoosenGame(game: string) {
+    function handleStartGame() {
 
         setIsGameLoading(true)
 
-        localStorage.setItem(LOCALSTORE_ITEM, JSON.stringify({
-            name: player?.name ? player.name : playerName,
-            gamesAvailable: ['light'],
-            currentTheme: game
+        localStorage.setItem(`player_${LOCALSTORE_KEY}`, JSON.stringify({
+            name: player.name,
+            gamesAvailable: player.gamesAvailable
         }))
 
-        if (!player) {
-            setPlayer({
-                name: playerName,
-                gamesAvailable: ['light'],
-                currentTheme: game
-            })
-        }
+        setPlayer({
+            ...player
+        })
     }
 
-    // const { colors } = useContext(ThemeContext)
 
     return (
         <Container>
-            {/* <Switch
-                onChange={() => { }}
-                checked={false}
-                checkedIcon={false}
-                uncheckedIcon={false}
-                height={20}
-                width={40}
-                handleDiameter={20}
-                offColor={shade(0.15, colors.primary)}
-                onColor={colors.secundary}
-            /> */}
+            <h1>{t('home:welcome')}<span>Beta</span></h1>
 
-            <h1>Welcome to Colors Crush<span>Beta</span></h1>
-            {player
-                ? <h3>Hello, {player.name}</h3>
-                : <input
-                    type='text'
-                    onChange={(event) => setPlayerName(event.target.value)}
-                    placeholder='Your Name'
-                />}
+            <h3>{t('home:choose-language')}</h3>
+            <div className="languages">
+                <Link
+                    href='/'
+                    locale={'en'}
+                >
+                    <button
+                        className={`languageSelector ${router.locale === 'en' ? 'active' : ''}`}
+                        disabled={router.locale === 'en' ? true : false}
+                    >
+                        🇬🇧
+                    </button>
+                </Link>
+                <Link
+                    href='/'
+                    locale={'pt-BR'}
+                >
+                    <button
+                        className={`languageSelector ${router.locale === 'pt-BR' ? 'active' : ''}`}
+                        disabled={router.locale === 'pt-BR' ? true : false}
+                    >
+                        🇧🇷
+                    </button>
+                </Link>
+            </div>
 
-            <h3>CHOOSE YOUR THEME TO PLAY</h3>
-            <ul className="listOfGames">
-                {isGameLoading ? <Loading />
-                    :
-                    (player
-                        ? player.gamesAvailable.map(game =>
-                        (<Link
-                            key={game}
-                            href='/gameboard'
+            <h3>{t('home:choose-theme')}</h3>
+            <div className="themes">
+                {player
+                    ? player.gamesAvailable.map(theme => (
+                        <button
+                            key={theme}
+                            className={`themeSelector ${currentTheme.title === theme && 'active'}`}
+                            disabled={isGameLoading || currentTheme.title === theme}
+                            onClick={() => setTheme(THEMES[theme])}
                         >
-                            <a
+                            {theme.toUpperCase()}
+                        </button>
+                    ))
+                    : <button
+                        className={`themeSelector ${currentTheme.title === 'light' && 'active'}`}
+                        disabled={isGameLoading || currentTheme.title === 'light'}
+                        onClick={() => setTheme(THEMES.light)}
+                    >
+                        LIGHT
+                    </button>
+                }
+            </div>
+            {!isChangingName
+                ? (
+                    <>
+                        <h3>
+                            {t('home:hello')}, {player.name}
+                            <span
+                                onClick={() => setIsChangingName(true)}
+                            >
+                                <EditIcon />
+                            </span>
+                        </h3>
 
-                                onClick={() => handleChoosenGame(game)}
-                            >
-                                {game.toUpperCase()}
-                            </a>
-                        </Link>)
-                        )
-                        : <Link
-                            href='/gameboard'
-                        >
+                        <Link href="/gameboard" >
                             <a
-                                onClick={() => handleChoosenGame('light')}
+                                className="startGame"
+                                onClick={handleStartGame}
                             >
-                                LIGHT
+                                {isGameLoading ? <Loading /> : t('home:start')}
                             </a>
-                        </Link>)}
-            </ul>
+                        </Link>
+                    </>
+                )
+                : <StartGameForm />
+            }
 
         </Container>
     )

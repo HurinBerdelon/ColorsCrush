@@ -1,28 +1,20 @@
 import { AppProps } from "next/app";
+import { appWithTranslation } from 'next-i18next'
 import { GameProvider } from "../hooks/useGame";
 import { GlobalStyle } from "../styles/GlobalStyle";
-import { ThemeProvider } from 'styled-components'
-import light from "../styles/theme/light";
-import dark from "../styles/theme/dark";
+import { ThemeContextProvider } from "../hooks/useTheme";
 
-import { useState } from "react";
-
-export default function MyApp({ Component, pageProps }: AppProps) {
-
-    const [theme, setTheme] = useState(light)
-
-    function toggleTheme() {
-        setTheme(theme.title === 'light' ? dark : light)
-    }
+function MyApp({ Component, pageProps }: AppProps) {
 
     return (
-        <ThemeProvider
-            theme={theme}
-        >
+        <ThemeContextProvider>
             <GameProvider>
                 <GlobalStyle />
                 <Component {...pageProps} />
             </GameProvider>
-        </ThemeProvider>
+
+        </ThemeContextProvider>
     )
 }
+
+export default appWithTranslation(MyApp)

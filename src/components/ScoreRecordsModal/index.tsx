@@ -23,16 +23,16 @@ export function ScoreRecordsModal({ isOpen, onRequestClose, historicalScores }: 
             overlayClassName='react-modal-overlay'
             className='react-modal-content'
         >
-
-            <button
-                type='button'
-                onClick={onRequestClose}
-                className='react-modal-close'
-            >
-                <img src='/assets/close.svg' alt="close-modal-button" />
-            </button>
-
             <Container>
+
+                <button
+                    type='button'
+                    onClick={onRequestClose}
+                    className='react-modal-close-score'
+                >
+                    <img src='/assets/close.svg' alt="close-modal-button" />
+                </button>
+
                 <ScoreRecords historical={historicalScores} />
             </Container>
         </Modal>

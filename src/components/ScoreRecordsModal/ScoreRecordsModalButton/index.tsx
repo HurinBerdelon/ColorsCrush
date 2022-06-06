@@ -1,3 +1,4 @@
+import { useTranslation } from "next-i18next"
 import { Container } from "./style"
 
 interface ScoreRecordsModalButtonProps {
@@ -6,11 +7,13 @@ interface ScoreRecordsModalButtonProps {
 
 export function ScoreRecordsModalButton({ handleOpenScoreRecordsModal }: ScoreRecordsModalButtonProps): JSX.Element {
 
+    const { t } = useTranslation()
+
     return (
         <Container
             onClick={handleOpenScoreRecordsModal}
         >
-            Show Ranking
+            {t('gameboard:show-ranking')}
         </Container>
     )
 }
