@@ -4,7 +4,7 @@ export const db_frequency = 20
 
 export const scoreTableLenght = 10
 
-export const darkThemeRewardScore = 2500
+export const darkThemeRewardScore = 20
 
 export const LOCALSTORE_KEY = `colors-crush_beta`
 

@@ -33,7 +33,10 @@ export function ThemeContextProvider({ children }: ThemeProviderProps) {
             if (!player.gamesAvailable.includes(theme.title)) {
                 setTheme(light)
             }
+        } else {
+            setTheme(light)
         }
+
     }, [])
 
     return (
