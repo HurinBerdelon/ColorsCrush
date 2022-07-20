@@ -92,6 +92,28 @@ export default function MainMenu(): JSX.Element {
                         🇧🇷
                     </button>
                 </Link>
+                <Link
+                    href='/'
+                    locale={'es'}
+                >
+                    <button
+                        className={`languageSelector ${router.locale === 'es' ? 'active' : ''}`}
+                        disabled={router.locale === 'es' ? true : false}
+                    >
+                        🇪🇸
+                    </button>
+                </Link>
+                <Link
+                    href='/'
+                    locale={'fr'}
+                >
+                    <button
+                        className={`languageSelector ${router.locale === 'fr' ? 'active' : ''}`}
+                        disabled={router.locale === 'fr' ? true : false}
+                    >
+                        🇫🇷
+                    </button>
+                </Link>
             </div>
 
             <h3>{t('home:choose-theme')}</h3>
