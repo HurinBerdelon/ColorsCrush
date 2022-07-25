@@ -65,7 +65,7 @@ export const Container = styled.div<ContainerProps>`
         }
 
         .interactionButtons {
-            width: 80%;
+            width: 90%;
             display: flex;
             justify-content: space-evenly;
 
@@ -73,7 +73,6 @@ export const Container = styled.div<ContainerProps>`
                 background: ${props => props.theme.colors.secondaryText};
                 color: ${props => props.theme.colors.white};
                 width: 42%;
-                height: 1.5rem;
 
                 display: flex;
                 justify-content: center;
@@ -161,7 +160,7 @@ export const Container = styled.div<ContainerProps>`
             }
 
             .interactionButtons {
-            width: 70%;
+            width: 80%;
 
             button {
                 background: ${props => props.theme.colors.secondaryText};

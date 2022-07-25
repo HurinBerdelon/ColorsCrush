@@ -1,0 +1,19 @@
+{
+    "click-to-play": "Jugar",
+    "click-here-for-instructions": "Instrucciones",
+    "score": "Puntaje",
+    "save-score": "Guardar puntaje",
+    "restart-game": "Reiniciar",
+    "player": "JUGADOR(A)",
+    "show-ranking": "Mostrar Clasificación",
+    "congratulations-you-got-new-theme": "¡Felicitaciones, tienes un nuevo tema como recompensa!",
+    "continue-this-game": "Continúa el juego",
+    "start-again-with-new-theme": "Empezar con un tema nuevo",
+    "how-to-play": "Como jugar",
+    "move-the-circles-to-make-rows": "Mueve los círculos para hacer filas o columnas con 3, 4 o 5 del mismo color y gana puntos.",
+    "circles-can-be-moved": "Los círculos se pueden mover un cuadrado hacia arriba, hacia abajo, hacia la izquierda o hacia la derecha.",
+    "on-moving-a-circle-it": "Al Mover un círculo cambiará de lugar con otro si se llega a una combinación de 3, 4 o 5.",
+    "everytime-a-match-is-reached": "Cada vez que se alcanza una combinación del mismo color, los círculos de ese color desaparecen y el tablero se llena.",
+    "matchs-of-x-give-y-points": "Combinaciones de 5 dan 15 puntos, combinaciones de 4 dan 8 puntos y combinaciones de 3 dan 3 points.",
+    "your-score-is-saved-every": "Su puntaje se guarga cada {{db_frequency}} segundos."
+}

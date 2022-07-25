@@ -1,0 +1,19 @@
+{
+    "click-to-play": "Cliquez pour jouer",
+    "click-here-for-instructions": "Cliquez ici pour les instructions",
+    "score": "Score",
+    "save-score": "Enregistrer le score",
+    "restart-game": "Recommencer",
+    "player": "JOUEUR/ JOUEUSE",
+    "show-ranking": " afficher le classement",
+    "congratulations-you-got-new-theme": "Félicitations ! Vous-avez un nouveau thème",
+    "continue-this-game": "continuer ce jeu",
+    "start-again-with-new-theme": "Recommencer avec un nouveau thème",
+    "how-to-play": "Comment jouer",
+    "move-the-circles-to-make-rows": "Déplacez les cercles pour faire des lignes ou des colonnes avec 3, 4 ou 5 de la même couleur et gagner des points.",
+    "circles-can-be-moved": "Los círculos se pueden mover un cuadrado hacia arriba, hacia abajo, hacia la izquierda o hacia la derecha.",
+    "on-moving-a-circle-it": "Lors du déplacement d'un cercle, si une combinaison de 3, 4 ou 5 est atteinte, il changera de place avec un autre.",
+    "everytime-a-match-is-reached": "Chaque fois qu'une combinaison de la même couleur est atteinte, les cercles de cette couleur disparaissent et le plateau se remplit.",
+    "matchs-of-x-give-y-points": "Les matchs de 5 donnent 15 points, les matchs de 4 donnent 8 points et les matchs de 3 donnent 3 points.",
+    "your-score-is-saved-every": "Votre score est enregistré toutes les {{db_frequency}} secondes."
+}

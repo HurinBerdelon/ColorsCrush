@@ -61,9 +61,11 @@ export function ReleasesModal({ handleCloseReleasesModal, isReleasesModalOpen }:
                     <li><CheckIcon /> {t('home:change-name-feature')}</li>
                     <li><CheckIcon /> {t('home:translation-to-portuguese')}</li>
 
+                    <h4>{t('home:version')} 0.5.0:</h4>
+                    <li><CheckIcon /> {t('home:translation-for-other-languages')}</li>
+
                     <h4>{t('home:next-versions')}:</h4>
                     <li><CheckBoxOutlineBlankIcon /> {t('home:other-themes-as-rewards')}</li>
-                    <li><CheckBoxOutlineBlankIcon /> {t('home:translation-for-other-languages')}</li>
                     <li><CheckBoxOutlineBlankIcon /> {t('home:new-ways-to-score-points')}</li>
                     <li><CheckBoxOutlineBlankIcon /> {t('home:level-hard-for-hardcore-players')}</li>
                 </ul>
