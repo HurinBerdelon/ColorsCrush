@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useGame } from "../../hooks/useGame";
 import { Container } from "./style";
-import { ThemeContext } from 'styled-components'
+import { ThemeContext } from "styled-components";
 import { api } from "../../services/api";
 import { Loading } from "../Feedback/WidgetForm/ScreenshotButton.tsx/Loading";
 import { toastSuccess } from "../../providers/toastProvider";
@@ -10,48 +10,50 @@ import { darkThemeRewardScore, LOCALSTORE_KEY } from "../../config";
 import { useTranslation } from "next-i18next";
 
 interface ScoreBoardProps {
-    handleOpenThemeRewardModal(opening?: boolean): void
+    handleOpenThemeRewardModal(opening?: boolean): void;
 }
 
-export function ScoreBoard({ handleOpenThemeRewardModal }: ScoreBoardProps): JSX.Element {
+export function ScoreBoard({
+    handleOpenThemeRewardModal,
+}: ScoreBoardProps): JSX.Element {
+    const { scoreDisplay, game } = useGame();
+    const [percent, setPercent] = useState(0);
+    const [multiplies, setMultiplies] = useState(0);
+    const [isRestartLoading, setIsRestartLoading] = useState(false);
+    const [isSaveLoading, setIsSaveLoading] = useState(false);
 
-    const { scoreDisplay, game } = useGame()
-    const [percent, setPercent] = useState(0)
-    const [multiplies, setMultiplies] = useState(0)
-    const [isRestartLoading, setIsRestartLoading] = useState(false)
-    const [isSaveLoading, setIsSaveLoading] = useState(false)
-
-    const { t } = useTranslation()
+    const { t } = useTranslation();
 
     useEffect(() => {
-        setPercent(scoreDisplay - (Math.floor(scoreDisplay / 100)) * 100)
-        setMultiplies(Math.floor(scoreDisplay / 100))
+        setPercent(scoreDisplay - Math.floor(scoreDisplay / 100) * 100);
+        setMultiplies(Math.floor(scoreDisplay / 100));
 
         if (scoreDisplay >= darkThemeRewardScore) {
-            const playerSaved: PlayerSchema = JSON.parse(localStorage.getItem(`player_${LOCALSTORE_KEY}`))
+            const playerSaved: PlayerSchema = JSON.parse(
+                localStorage.getItem(`player_${LOCALSTORE_KEY}`)
+            );
 
-            if (!playerSaved.gamesAvailable.includes('dark')) {
-                handleOpenThemeRewardModal(true)
+            if (!playerSaved.gamesAvailable.includes("dark")) {
+                handleOpenThemeRewardModal(true);
             }
         }
+    }, [scoreDisplay]);
 
-    }, [scoreDisplay])
-
-    async function handleSaveScore() {
-        setIsSaveLoading(true)
-        const response = await api.post('/prisma_api', game)
-        if (response.data.received) {
-            setIsSaveLoading(false)
-            toastSuccess()
-        }
-    }
+    // async function handleSaveScore() {
+    //     setIsSaveLoading(true);
+    //     const response = await api.post("/prisma_api", game);
+    //     if (response.data.received) {
+    //         setIsSaveLoading(false);
+    //         toastSuccess();
+    //     }
+    // }
 
     function handleReloadPage() {
-        location.reload()
-        setIsRestartLoading(true)
+        location.reload();
+        setIsRestartLoading(true);
     }
 
-    const { colors } = useContext(ThemeContext)
+    const { colors } = useContext(ThemeContext);
 
     return (
         <Container
@@ -60,30 +62,35 @@ export function ScoreBoard({ handleOpenThemeRewardModal }: ScoreBoardProps): JSX
             barColorEnd={colors.scoreBar[multiplies % 7]?.end}
         >
             <div className="scores">
-                <h2>{t('gameboard:score')}: {scoreDisplay}</h2>
+                <h2>
+                    {t("gameboard:score")}: {scoreDisplay}
+                </h2>
                 <div className="scoreBox">
                     <div className="scoreBar"></div>
                 </div>
                 <h3>{multiplies} x</h3>
 
                 <div className="interactionButtons">
-                    <button
+                    {/* <button
                         type="button"
                         onClick={handleSaveScore}
                         disabled={isSaveLoading}
                     >
                         {isSaveLoading ? <Loading /> : t('gameboard:save-score')}
-                    </button>
+                    </button> */}
                     <button
                         type="button"
                         onClick={handleReloadPage}
                         disabled={isRestartLoading}
                     >
-                        {isRestartLoading ? <Loading /> : t('gameboard:restart-game')}
+                        {isRestartLoading ? (
+                            <Loading />
+                        ) : (
+                            t("gameboard:restart-game")
+                        )}
                     </button>
                 </div>
             </div>
-
         </Container>
-    )
+    );
 }
